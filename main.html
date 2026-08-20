@@ -6,7 +6,7 @@
     <title>🔥 Amazonia Medievalis</title>
     <style>
         /* ================================================================
-           ПИКСЕЛЬНЫЙ СРЕДНЕВЕКОВЫЙ СТИЛЬ — ВЫСОКАЯ КОНТРАСТНОСТЬ
+           ПИКСЕЛЬНЫЙ СТИЛЬ
            ================================================================ */
 
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
@@ -53,7 +53,7 @@
             opacity: 0.4;
         }
 
-        /* ===== ШАПКА ===== */
+        /* ===== ШАПКА (НАЗВАНИЕ ПО ЦЕНТРУ) ===== */
         .header {
             display: flex;
             flex-direction: column;
@@ -70,49 +70,28 @@
             justify-content: center;
             gap: 14px;
             width: 100%;
-            cursor: pointer;
+            cursor: default;
         }
 
+        /* ===== ФАКЕЛ ИЗ GIF ===== */
         .torch-container {
             width: 48px;
             height: 64px;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
-        }
-
-        .torch {
-            font-size: 3rem;
-            line-height: 1;
-            display: block;
-            text-align: center;
-            filter: drop-shadow(0 0 30px rgba(255, 150, 40, 0.5));
-            animation: torchFlicker 0.12s infinite alternate;
             image-rendering: pixelated;
         }
 
-        @keyframes torchFlicker {
-            0% {
-                transform: scale(1) rotate(-2deg);
-                filter: drop-shadow(0 0 20px rgba(255, 150, 40, 0.4)) brightness(1);
-            }
-            25% {
-                transform: scale(1.05) rotate(1deg);
-                filter: drop-shadow(0 0 40px rgba(255, 180, 60, 0.7)) brightness(1.15);
-            }
-            50% {
-                transform: scale(0.95) rotate(-1deg);
-                filter: drop-shadow(0 0 15px rgba(220, 120, 30, 0.25)) brightness(0.88);
-            }
-            75% {
-                transform: scale(1.08) rotate(2deg);
-                filter: drop-shadow(0 0 45px rgba(255, 200, 80, 0.6)) brightness(1.12);
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
-                filter: drop-shadow(0 0 30px rgba(255, 150, 40, 0.5)) brightness(1);
-            }
+        .torch-container img {
+            max-width: 100%;
+            max-height: 100%;
+            image-rendering: pixelated;
+            display: block;
         }
 
+        /* ===== ЛОГОТИП ===== */
         .logo-text {
             font-family: 'Press Start 2P', 'Courier New', monospace;
             font-size: 1.3rem;
@@ -132,6 +111,7 @@
             text-shadow: 0 0 20px rgba(150, 100, 60, 0.1);
         }
 
+        /* ===== УПРАВЛЕНИЕ ===== */
         .controls {
             display: flex;
             gap: 8px;
@@ -178,7 +158,7 @@
             background: #1a0e0a;
         }
 
-        /* ===== СУНДУК (вместо корзины) ===== */
+        /* ===== СУНДУК ===== */
         .cart-badge {
             background: #0f0806;
             color: #f0ddd0;
@@ -213,6 +193,7 @@
             border: 1px solid #5a3a2a;
         }
 
+        /* ===== ПОИСК ===== */
         .search-bar {
             display: flex;
             gap: 8px;
@@ -265,6 +246,7 @@
             box-shadow: 0 1px 0 #050302;
         }
 
+        /* ===== КАТЕГОРИИ ===== */
         .categories {
             display: flex;
             gap: 6px 14px;
@@ -302,6 +284,7 @@
             border-color: #6a2f1f;
         }
 
+        /* ===== ТОВАРЫ ===== */
         .products {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -397,6 +380,7 @@
             box-shadow: 0 1px 0 #0a0604;
         }
 
+        /* ===== ТОСТ ===== */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -438,6 +422,7 @@
             color: #f0e8e0;
         }
 
+        /* ===== ПОДВАЛ ===== */
         .footer {
             margin-top: 30px;
             padding-top: 16px;
@@ -499,45 +484,6 @@
             letter-spacing: 2px;
         }
 
-        .modal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .modal-item {
-            background: #0f0806;
-            border: 2px solid #2a1a10;
-            padding: 14px 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.25s;
-        }
-        .modal-item:hover {
-            border-color: #6a3f2a;
-            transform: scale(1.05);
-            background: #1a0e0a;
-        }
-        .modal-item .emoji {
-            font-size: 2.8rem;
-            display: block;
-            margin-bottom: 6px;
-        }
-        .modal-item .label {
-            font-size: 0.45rem;
-            color: #8a7a6a;
-            word-wrap: break-word;
-        }
-        .modal-item.selected {
-            border-color: #e08050;
-            background: #2a1610;
-            box-shadow: 0 0 30px rgba(200, 80, 30, 0.15);
-        }
-        .modal-item.selected .label {
-            color: #f0d5a0;
-        }
-
         .modal-close-btn {
             display: block;
             margin: 0 auto;
@@ -553,14 +499,6 @@
         .modal-close-btn:hover {
             background: #1a0e0a;
             border-color: #6a3f2a;
-        }
-
-        .hint {
-            text-align: center;
-            font-size: 0.4rem;
-            color: #6a5a4a;
-            margin: 12px 0 16px;
-            line-height: 1.6;
         }
 
         /* ===== МОДАЛКА СУНДУКА ===== */
@@ -691,19 +629,6 @@
                 width: 36px;
                 height: 48px;
             }
-            .torch {
-                font-size: 2.2rem;
-            }
-            .modal-grid {
-                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-            }
-            .modal-item .emoji {
-                font-size: 2rem;
-            }
-            .cart-item {
-                font-size: 0.4rem;
-                flex-wrap: wrap;
-            }
         }
 
         ::-webkit-scrollbar {
@@ -728,18 +653,18 @@
 
         <!-- ===== ШАПКА ===== -->
         <header class="header">
-            <div class="logo-area" id="torchContainer">
+            <div class="logo-area">
+                <!-- ===== ФАКЕЛ ИЗ GIF ===== -->
                 <div class="torch-container">
-                    <span class="torch" data-testid="logo-icon" id="torchIcon">🔥</span>
+                    <img src="Torch_Gif.gif" alt="Факел" data-testid="logo-icon" />
                 </div>
-                <div class="logo-text" data-testid="logo-text" id="logoText">
+                <div class="logo-text" data-testid="logo-text">
                     Amazonia Medievalis
                     <small data-testid="logo-sub">⚜️ ANNO DOMINI MCCCXLVII ⚜️</small>
                 </div>
             </div>
 
             <div class="controls">
-                <!-- СУНДУК вместо корзины -->
                 <div class="cart-badge" data-testid="cart-badge" id="cartBadge">
                     📦 <span data-testid="cart-count" class="cart-count">0</span>
                 </div>
@@ -788,16 +713,6 @@
         <button class="toast-close" onclick="hideToast()">✕</button>
     </div>
 
-    <!-- ===== МОДАЛКА ФАКЕЛОВ ===== -->
-    <div class="modal-overlay" id="torchModal">
-        <div class="modal">
-            <div class="modal-title">🔥 ВЫБЕРИ СИМВОЛ ОГНЯ 🔥</div>
-            <div class="modal-grid" id="torchGrid"></div>
-            <div class="hint">💡 КЛИКНИ НА ЛЮБОЙ — ОН СТАНЕТ ТВОИМ ФАКЕЛОМ</div>
-            <button class="modal-close-btn" onclick="closeTorchModal()">✕ ЗАКРЫТЬ</button>
-        </div>
-    </div>
-
     <!-- ===== МОДАЛКА СУНДУКА ===== -->
     <div class="modal-overlay" id="cartModal">
         <div class="modal cart-modal">
@@ -819,42 +734,31 @@
         // ================================================================
 
         const PRODUCTS = {
-    ru: [
-        { id: 1, emoji: '🧥', name: 'Мантия "Переживший Чуму"', desc: 'Ограниченный тираж 1348 года. Согреет после любого апокалипсиса. 100% шерсть.',
-            price: 600, oldPrice: null },
-        { id: 2, emoji: '🧻', name: 'Свитки для уединения', desc: 'Пока сидишь — читаешь. Мудрые изречения и забавные истории. Два в одном!',
-            price: 333, oldPrice: null }
-    ],
-    en: [
-        { id: 1, emoji: '🧥', name: 'Cloak "Plague Survivor"', desc: 'Limited edition from 1348. Warms after any apocalypse. 100% wool.',
-            price: 600, oldPrice: null },
-        { id: 2, emoji: '🧻', name: 'Scrolls for Solitude', desc: 'Read while you sit. Wise sayings and funny stories. Two in one!',
-            price: 333, oldPrice: null }
-    ],
-    la: [
-        { id: 1, emoji: '🧥', name: 'PALLIUM "PESTEM SUPERVIVI"', desc: 'Editio limitata anni 1348. Post quemlibet apocalypsin calefacit. 100% lana.',
-            price: 600, oldPrice: null },
-        { id: 2, emoji: '🧻', name: 'VOLUMINA SOLITUDINI', desc: 'Dum sedes, legis. Sententiae sapientes et fabulae iocosae. Duo in uno!',
-            price: 333, oldPrice: null }
-    ]
-};
+            ru: [
+                { id: 1, emoji: '🧥', name: 'Мантия "Переживший Чуму"', desc: 'Ограниченный тираж 1348 года. Согреет после любого апокалипсиса. 100% шерсть.',
+                    price: 600, oldPrice: null },
+                { id: 2, emoji: '🧻', name: 'Свитки для уединения', desc: 'Пока сидишь — читаешь. Мудрые изречения и забавные истории. Два в одном!',
+                    price: 333, oldPrice: null }
+            ],
+            en: [
+                { id: 1, emoji: '🧥', name: 'Cloak "Plague Survivor"', desc: 'Limited edition from 1348. Warms after any apocalypse. 100% wool.',
+                    price: 600, oldPrice: null },
+                { id: 2, emoji: '🧻', name: 'Scrolls for Solitude', desc: 'Read while you sit. Wise sayings and funny stories. Two in one!',
+                    price: 333, oldPrice: null }
+            ],
+            la: [
+                { id: 1, emoji: '🧥', name: 'PALLIUM "PESTEM SUPERVIVI"', desc: 'Editio limitata anni 1348. Post quemlibet apocalypsin calefacit. 100% lana.',
+                    price: 600, oldPrice: null },
+                { id: 2, emoji: '🧻', name: 'VOLUMINA SOLITUDINI', desc: 'Dum sedes, legis. Sententiae sapientes et fabulae iocosae. Duo in uno!',
+                    price: 333, oldPrice: null }
+            ]
+        };
+
         const EXCHANGE_RATES = { rub: 1, usd: 0.011, ducat: 0.008 };
         const CURRENCY_SYMBOLS = { rub: '₽', usd: '$', ducat: '⛃' };
 
-        const TORCH_VARIANTS = [
-            { emoji: '🔥', label: 'Классический' },
-            { emoji: '✸', label: 'Искра' },
-            { emoji: '⚡', label: 'Молния' },
-            { emoji: '🌋', label: 'Вулкан' },
-            { emoji: '☄️', label: 'Метеор' },
-            { emoji: '💥', label: 'Взрыв' },
-            { emoji: '✨', label: 'Магия' },
-            { emoji: '🌟', label: 'Звезда' },
-            { emoji: '🌞', label: 'Солнце' }
-        ];
-
         // ================================================================
-        //  UI-ТЕКСТЫ — ВЕЗДЕ "СУНДУК" вместо "КОРЗИНА"
+        //  UI-ТЕКСТЫ
         // ================================================================
         const UI_TEXTS = {
             ru: {
@@ -872,14 +776,10 @@
                 toastRemove: (name) => `🗑️ «${name}» удалён из сундука!`,
                 inquisitionAlert: '🔥 Святая инквизиция запросила ваш IP. Продолжить?',
                 cartEmpty: '☠ Сундук пуст. Добавь товар, грешник!',
-                cartItems: (names) => `📦 В сундуке грешника: ${names}`,
                 cartCleared: '☠ Сундук очищен! Все грехи смыты... пока.',
                 searchEmpty: '🔍 Напиши что-нибудь, грешник!',
                 searchFound: (count) => `🔍 Найдено ${count} товаров!`,
-                searchNotFound: '☠ Ничего не найдено. Попробуй "футболка" или "свитки"',
-                torchModalTitle: '🔥 ВЫБЕРИ СИМВОЛ ОГНЯ 🔥',
-                torchHint: '💡 КЛИКНИ НА ЛЮБОЙ — ОН СТАНЕТ ТВОИМ ФАКЕЛОМ',
-                torchClose: '✕ ЗАКРЫТЬ',
+                searchNotFound: '☠ Ничего не найдено. Попробуй "мантия" или "свитки"',
                 cartTitle: '📦 СУНДУК ГРЕШНИКА',
                 cartTotal: 'ИТОГО:',
                 cartEmptyText: '☠ СУНДУК ПУСТ\nДОБАВЬ ТОВАР, ГРЕШНИК!',
@@ -902,14 +802,10 @@
                 toastRemove: (name) => `🗑️ «${name}» removed from the chest!`,
                 inquisitionAlert: '🔥 The Holy Inquisition has requested your IP. Continue?',
                 cartEmpty: '☠ The chest is empty. Add an item, sinner!',
-                cartItems: (names) => `📦 In the sinner\'s chest: ${names}`,
                 cartCleared: '☠ Chest cleared! All sins are washed away... for now.',
                 searchEmpty: '🔍 Write something, sinner!',
                 searchFound: (count) => `🔍 Found ${count} items!`,
-                searchNotFound: '☠ Nothing found. Try "shirt" or "scrolls"',
-                torchModalTitle: '🔥 CHOOSE YOUR FIRE SYMBOL 🔥',
-                torchHint: '💡 CLICK ANY — IT BECOMES YOUR TORCH',
-                torchClose: '✕ CLOSE',
+                searchNotFound: '☠ Nothing found. Try "cloak" or "scrolls"',
                 cartTitle: '📦 SINNER\'S CHEST',
                 cartTotal: 'TOTAL:',
                 cartEmptyText: '☠ CHEST IS EMPTY\nADD AN ITEM, SINNER!',
@@ -932,14 +828,10 @@
                 toastRemove: (name) => `🗑️ «${name}» DE ARCA REMOTUM!`,
                 inquisitionAlert: '🔥 INQUISITIO SANCTA IP TUUM PETIVIT. PERGERE?',
                 cartEmpty: '☠ ARCA VACUA EST. ADDE MERCEM, PECCATOR!',
-                cartItems: (names) => `📦 IN ARCA PECCATORIS: ${names}`,
                 cartCleared: '☠ ARCA PURGATA! OMNIA PECCATA ABLUTA... PRO NUNC.',
                 searchEmpty: '🔍 ALIQUID SCRIBE, PECCATOR!',
                 searchFound: (count) => `🔍 ${count} MERCES INVENTAE!`,
-                searchNotFound: '☠ NIHIL INVENTUM. TENTA "TUNICA" VEL "VOLUMINA"',
-                torchModalTitle: '🔥 ELIGE SYMBOLUM IGNIS 🔥',
-                torchHint: '💡 CLICCA QUEMVIS — FIT FACE TUUM',
-                torchClose: '✕ CLAUDE',
+                searchNotFound: '☠ NIHIL INVENTUM. TENTA "PALLIUM" VEL "VOLUMINA"',
                 cartTitle: '📦 ARCA PECCATORIS',
                 cartTotal: 'SUMMA:',
                 cartEmptyText: '☠ ARCA VACUA EST\nADDE MERCEM, PECCATOR!',
@@ -957,7 +849,6 @@
         let cart = [];
         let toastTimer = null;
         let productContainer = document.getElementById('productGrid');
-        let currentTorch = '🔥';
 
         // ================================================================
         //  ФУНКЦИИ
@@ -971,7 +862,6 @@
             renderProducts(currentLang);
             updateUITexts(currentLang);
             updateCartBadge();
-            updateTorchModalTexts(lang);
             updateCartModalTexts(lang);
         }
 
@@ -1035,7 +925,7 @@
         }
 
         // ================================================================
-        //  СУНДУК (вместо корзины)
+        //  КОРЗИНА / СУНДУК
         // ================================================================
 
         function addToCart(productId) {
@@ -1134,71 +1024,9 @@
             if (title) title.textContent = t.cartTitle;
             if (clearBtn) clearBtn.textContent = t.cartClearBtn;
             closeBtns.forEach(btn => {
-                if (btn.textContent.includes('ЗАКРЫТЬ') || btn.textContent.includes('CLOSE') || btn.textContent.includes(
-                        'CLAUDE')) {
-                    btn.textContent = t.cartCloseBtn;
-                }
+                btn.textContent = t.cartCloseBtn;
             });
             renderCartModal();
-        }
-
-        // ================================================================
-        //  МОДАЛКА ФАКЕЛОВ
-        // ================================================================
-
-        function openTorchModal() {
-            const modal = document.getElementById('torchModal');
-            const grid = document.getElementById('torchGrid');
-
-            grid.innerHTML = '';
-            TORCH_VARIANTS.forEach((item) => {
-                const div = document.createElement('div');
-                div.className = 'modal-item' + (item.emoji === currentTorch ? ' selected' : '');
-                div.innerHTML = `
-                    <span class="emoji">${item.emoji}</span>
-                    <span class="label">${item.label}</span>
-                `;
-                div.addEventListener('click', () => selectTorch(item.emoji));
-                grid.appendChild(div);
-            });
-
-            updateTorchModalTexts(currentLang);
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeTorchModal() {
-            document.getElementById('torchModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function selectTorch(emoji) {
-            currentTorch = emoji;
-            document.getElementById('torchIcon').textContent = emoji;
-
-            document.querySelectorAll('.modal-item').forEach(el => el.classList.remove('selected'));
-            const items = document.querySelectorAll('.modal-item');
-            for (let i = 0; i < TORCH_VARIANTS.length; i++) {
-                if (TORCH_VARIANTS[i].emoji === emoji) {
-                    items[i].classList.add('selected');
-                }
-            }
-
-            const msg = currentLang === 'ru' ? 'выбран как твой факел!' :
-                currentLang === 'en' ? 'chosen as your torch!' :
-                'electus est ut fax tua!';
-            showToast(`🔥 ${emoji} ${msg}`);
-        }
-
-        function updateTorchModalTexts(lang) {
-            const t = UI_TEXTS[lang] || UI_TEXTS.ru;
-            const title = document.querySelector('#torchModal .modal-title');
-            const hint = document.querySelector('#torchModal .hint');
-            const closeBtn = document.querySelector('#torchModal .modal-close-btn');
-
-            if (title) title.textContent = t.torchModalTitle;
-            if (hint) hint.textContent = t.torchHint;
-            if (closeBtn) closeBtn.textContent = t.torchClose;
         }
 
         // ================================================================
@@ -1224,9 +1052,10 @@
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
 
-            document.getElementById('torchContainer').addEventListener('click', openTorchModal);
+            // Корзина
             document.getElementById('cartBadge').addEventListener('click', openCartModal);
 
+            // Закрытие модалок по клику на оверлей
             document.querySelectorAll('.modal-overlay').forEach(el => {
                 el.addEventListener('click', function(e) {
                     if (e.target === this) {
@@ -1236,6 +1065,7 @@
                 });
             });
 
+            // Инквизиция
             document.querySelector('[data-testid="category-inquisition"]').addEventListener('click', function(e) {
                 e.preventDefault();
                 const t = UI_TEXTS[currentLang];
@@ -1246,6 +1076,7 @@
                 }
             });
 
+            // Поиск
             const searchBtn = document.getElementById('searchBtn');
             const searchInput = document.getElementById('searchInput');
             searchBtn.addEventListener('click', function(e) {
@@ -1266,23 +1097,22 @@
                 if (e.key === 'Enter') searchBtn.click();
             });
 
+            // Старт
             renderProducts('ru');
             updateUITexts('ru');
             updateCartBadge();
             setTimeout(() => showToast('🔥 SALVE, PECCATOR! / Добро пожаловать, грешник!'), 600);
         });
 
+        // Глобальные функции для onclick
         window.switchLang = switchLang;
         window.switchCurrency = switchCurrency;
         window.addToCart = addToCart;
         window.removeFromCart = removeFromCart;
         window.clearCart = clearCart;
         window.hideToast = hideToast;
-        window.openTorchModal = openTorchModal;
-        window.closeTorchModal = closeTorchModal;
         window.openCartModal = openCartModal;
         window.closeCartModal = closeCartModal;
-        window.selectTorch = selectTorch;
         window.renderCartModal = renderCartModal;
     </script>
 
