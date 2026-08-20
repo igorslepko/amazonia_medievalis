@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🔥 Amazonia Medievalis</title>
+    <style>
+        /* ================================================================
+           ПИКСЕЛЬНЫЙ СРЕДНЕВЕКОВЫЙ СТИЛЬ
+           ================================================================ */
+
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            image-rendering: pixelated;
+        }
+
+        body {
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            background: #0a0604;
+            background-image: radial-gradient(ellipse at 20% 50%, #1a0e0a 0%, #0a0604 70%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            color: #e8ddd0;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #1a100c;
+            background-image: radial-gradient(ellipse at 30% 20%, #2a1812 0%, #1a100c 80%);
+            border: 4px solid #5a3a2a;
+            padding: 20px 20px 30px;
+            box-shadow: 0 0 60px rgba(100, 30, 15, 0.25), inset 0 0 60px rgba(30, 10, 5, 0.3);
+            position: relative;
+            image-rendering: pixelated;
+        }
+
+        .container::before {
+            content: '▐▐▐▐▐';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.6rem;
+            color: #8a5a3a;
+            letter-spacing: 8px;
+            opacity: 0.4;
+        }
+
+        /* ===== ШАПКА (НАЗВАНИЕ ПО ЦЕНТРУ) ===== */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 3px solid #5a3a2a;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
+            gap: 10px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* ===== ГОРЯЩИЙ ФАКЕЛ ===== */
+        .torch-container {
+            width: 48px;
+            height: 64px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .torch {
+            font-size: 3rem;
+            line-height: 1;
+            display: block;
+            text-align: center;
+            filter: drop-shadow(0 0 30px rgba(255, 150, 40, 0.5));
+            animation: torchFlicker 0.12s infinite alternate;
+            image-rendering: pixelated;
+        }
+
+        @keyframes torchFlicker {
+            0% {
+                transform: scale(1) rotate(-2deg);
+                filter: drop-shadow(0 0 20px rgba(255, 150, 40, 0.4)) brightness(1);
+            }
+            25% {
+                transform: scale(1.05) rotate(1deg);
+                filter: drop-shadow(0 0 40px rgba(255, 180, 60, 0.7)) brightness(1.15);
+            }
+            50% {
+                transform: scale(0.95) rotate(-1deg);
+                filter: drop-shadow(0 0 15px rgba(220, 120, 30, 0.25)) brightness(0.88);
+            }
+            75% {
+                transform: scale(1.08) rotate(2deg);
+                filter: drop-shadow(0 0 45px rgba(255, 200, 80, 0.6)) brightness(1.12);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 30px rgba(255, 150, 40, 0.5)) brightness(1);
+            }
+        }
+
+        /* ===== ЛОГОТИП ===== */
+        .logo-text {
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 1.3rem;
+            color: #f0d5a0;
+            text-shadow: 0 0 30px rgba(200, 120, 40, 0.2), 0 2px 0 #0a0604;
+            letter-spacing: 3px;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 0.5rem;
+            color: #b09070;
+            letter-spacing: 4px;
+            margin-top: 4px;
+            font-weight: 400;
+            text-shadow: 0 0 20px rgba(150, 100, 60, 0.1);
+        }
+
+        /* ===== УПРАВЛЕНИЕ ===== */
+        .controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding-top: 6px;
+        }
+
+        .lang-toggle,
+        .currency-toggle {
+            display: flex;
+            gap: 4px;
+            background: #0f0806;
+            padding: 4px 6px;
+            border: 2px solid #4a2a1a;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .lang-btn,
+        .currency-btn {
+            background: transparent;
+            border: none;
+            padding: 4px 10px;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.5rem;
+            cursor: pointer;
+            color: #8a7a6a;
+            transition: 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            image-rendering: pixelated;
+        }
+        .lang-btn.active,
+        .currency-btn.active {
+            background: #3d221a;
+            color: #f0ddd0;
+            border: 1px solid #6a3f2a;
+        }
+        .lang-btn:hover:not(.active),
+        .currency-btn:hover:not(.active) {
+            color: #f0ddd0;
+            background: #1a0e0a;
+        }
+
+        /* ===== КОРЗИНА ===== */
+        .cart-badge {
+            background: #0f0806;
+            color: #f0ddd0;
+            padding: 6px 14px 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            border: 2px solid #4a2a1a;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 3px 0 #050302;
+        }
+        .cart-badge:hover {
+            transform: translateY(-2px);
+            border-color: #6a3f2a;
+            box-shadow: 0 5px 0 #050302;
+            background: #1a0e0a;
+        }
+        .cart-badge:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #050302;
+        }
+        .cart-count {
+            background: #2a1610;
+            padding: 0 8px;
+            font-size: 0.6rem;
+            min-width: 22px;
+            text-align: center;
+            color: #f0ddd0;
+            border: 1px solid #5a3a2a;
+        }
+
+        /* ===== ПОИСК ===== */
+        .search-bar {
+            display: flex;
+            gap: 8px;
+            margin: 12px 0 16px;
+            flex-wrap: wrap;
+        }
+        .search-bar input {
+            flex: 1;
+            min-width: 150px;
+            padding: 10px 14px;
+            background: #0f0806;
+            border: 2px solid #2a1a10;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.6rem;
+            color: #f0e0d0;
+            outline: none;
+            transition: 0.2s;
+            box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.5);
+            image-rendering: pixelated;
+        }
+        .search-bar input::placeholder {
+            color: #c0b0a0;
+            font-size: 0.5rem;
+            opacity: 1;
+        }
+        .search-bar input:focus {
+            border-color: #6a3f2a;
+            box-shadow: 0 0 30px rgba(150, 80, 30, 0.15), inset 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            background: #0f0806;
+            color: #f0ddd0;
+            border: 2px solid #2a1a10;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.6rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 3px 0 #050302;
+            image-rendering: pixelated;
+        }
+        .search-bar button:hover {
+            transform: translateY(-2px);
+            border-color: #5a3a2a;
+            box-shadow: 0 5px 0 #050302;
+            background: #1a0e0a;
+        }
+        .search-bar button:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #050302;
+        }
+
+        /* ===== КАТЕГОРИИ ===== */
+        .categories {
+            display: flex;
+            gap: 6px 14px;
+            flex-wrap: wrap;
+            margin: 6px 0 18px;
+            padding: 10px 8px;
+            border-top: 2px solid #0f0806;
+            border-bottom: 2px solid #0f0806;
+            background: rgba(10, 6, 4, 0.15);
+        }
+        .categories a {
+            color: #d0c0b0;
+            text-decoration: none;
+            font-size: 0.5rem;
+            padding: 4px 10px;
+            transition: 0.2s;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            border: 1px solid transparent;
+            image-rendering: pixelated;
+        }
+        .categories a:hover {
+            color: #f0e8e0;
+            background: #1a0e0a;
+            border-color: #4a2a1a;
+        }
+        .categories a[data-testid="category-inquisition"] {
+            color: #e06040;
+            text-shadow: 0 0 30px rgba(200, 60, 20, 0.25);
+        }
+        .categories a[data-testid="category-inquisition"]:hover {
+            color: #ff8060;
+            border-color: #6a2f1f;
+        }
+
+        /* ===== ТОВАРЫ ===== */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 6px;
+        }
+
+        .product-card {
+            background: #1a100c;
+            border: 3px solid #2a1a10;
+            padding: 16px 14px 18px;
+            box-shadow: 0 4px 0 #0a0604;
+            transition: 0.2s;
+            cursor: default;
+            position: relative;
+            image-rendering: pixelated;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: #4a2a1a;
+            box-shadow: 0 6px 0 #0a0604;
+        }
+
+        .product-emoji {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            text-align: center;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+            image-rendering: pixelated;
+        }
+
+        .product-name {
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.65rem;
+            color: #f0d5a0;
+            margin: 10px 0 6px;
+            min-height: 3em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+        }
+
+        .product-desc {
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.5rem;
+            color: #d0c0b0;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            min-height: 5em;
+            border-left: 2px solid #2a1a10;
+            padding-left: 10px;
+        }
+
+        .product-price {
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #e08050;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 30px rgba(200, 80, 30, 0.15);
+        }
+        .product-price small {
+            font-size: 0.5rem;
+            color: #8a7a6a;
+            text-decoration: line-through;
+        }
+
+        .add-btn {
+            width: 100%;
+            padding: 10px 0;
+            background: #0f0806;
+            color: #f0ddd0;
+            border: 2px solid #2a1a10;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 3px 0 #0a0604;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            image-rendering: pixelated;
+        }
+        .add-btn:hover {
+            background: #1a0e0a;
+            border-color: #5a3a2a;
+            color: #f0e8e0;
+            box-shadow: 0 3px 0 #0a0604, 0 0 30px rgba(150, 80, 30, 0.12);
+        }
+        .add-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #0a0604;
+        }
+
+        /* ===== ТОСТ ===== */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1a100c;
+            color: #f0e8e0;
+            padding: 14px 20px;
+            border: 3px solid #3d221a;
+            border-left: 6px solid #8a3f2a;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+            max-width: 380px;
+            transform: translateY(120px);
+            opacity: 0;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+            z-index: 999;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.55rem;
+            line-height: 1.6;
+            image-rendering: pixelated;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .toast-close {
+            background: none;
+            border: none;
+            color: #8a7a6a;
+            font-size: 1rem;
+            margin-left: 12px;
+            cursor: pointer;
+            padding: 0 4px;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            transition: 0.2s;
+        }
+        .toast-close:hover {
+            color: #f0e8e0;
+        }
+
+        /* ===== ПОДВАЛ ===== */
+        .footer {
+            margin-top: 30px;
+            padding-top: 16px;
+            border-top: 2px solid #0f0806;
+            text-align: center;
+            color: #8a7a6a;
+            font-size: 0.45rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+        }
+        .footer small {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.4rem;
+            color: #6a5a4a;
+            letter-spacing: 3px;
+        }
+        .footer [data-testid="footer-text"] {
+            color: #b0a090;
+        }
+
+        /* ================================================================
+           МОДАЛЬНЫЕ ОКНА (ФАКЕЛЫ + КОРЗИНА-СУНДУК)
+           ================================================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #1a100c;
+            border: 4px solid #5a3a2a;
+            padding: 30px 25px 25px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.9);
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 0.8rem;
+            color: #f0d5a0;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        /* ----- МОДАЛКА ФАКЕЛОВ ----- */
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .modal-item {
+            background: #0f0806;
+            border: 2px solid #2a1a10;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+        .modal-item:hover {
+            border-color: #6a3f2a;
+            transform: scale(1.05);
+            background: #1a0e0a;
+        }
+        .modal-item .emoji {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .modal-item .label {
+            font-size: 0.45rem;
+            color: #8a7a6a;
+            word-wrap: break-word;
+        }
+        .modal-item.selected {
+            border-color: #e08050;
+            background: #2a1610;
+            box-shadow: 0 0 30px rgba(200, 80, 30, 0.15);
+        }
+        .modal-item.selected .label {
+            color: #f0d5a0;
+        }
+
+        .modal-close-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 30px;
+            background: #0f0806;
+            color: #f0ddd0;
+            border: 2px solid #3d221a;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.55rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .modal-close-btn:hover {
+            background: #1a0e0a;
+            border-color: #6a3f2a;
+        }
+
+        .hint {
+            text-align: center;
+            font-size: 0.4rem;
+            color: #6a5a4a;
+            margin: 12px 0 16px;
+            line-height: 1.6;
+        }
+
+        /* ----- МОДАЛКА КОРЗИНЫ (СУНДУК) ----- */
+        .cart-modal .modal-title {
+            font-size: 0.9rem;
+            color: #f0d5a0;
+            text-shadow: 0 0 30px rgba(200, 120, 40, 0.15);
+        }
+
+        .cart-items {
+            margin: 16px 0 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-bottom: 1px solid #1a0e0a;
+            font-size: 0.5rem;
+            color: #d0c0b0;
+            gap: 10px;
+        }
+        .cart-item .item-emoji {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .cart-item .item-name {
+            flex: 1;
+            min-width: 80px;
+        }
+        .cart-item .item-price {
+            color: #e08050;
+            flex-shrink: 0;
+            text-align: right;
+        }
+        .cart-item .item-remove {
+            background: none;
+            border: 2px solid #2a1a10;
+            color: #5a3a2a;
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: 2px 10px;
+            transition: 0.2s;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+        }
+        .cart-item .item-remove:hover {
+            border-color: #8a3f2a;
+            color: #e06040;
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: #6a5a4a;
+            font-size: 0.5rem;
+            padding: 30px 0;
+            line-height: 2;
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 0.7rem;
+            color: #f0d5a0;
+            padding: 12px 12px 0;
+            border-top: 2px solid #2a1a10;
+            margin-bottom: 16px;
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .cart-actions button {
+            padding: 8px 20px;
+            background: #0f0806;
+            color: #f0ddd0;
+            border: 2px solid #2a1a10;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.45rem;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+        .cart-actions button:hover {
+            border-color: #5a3a2a;
+            background: #1a0e0a;
+        }
+        .cart-actions .clear-btn {
+            border-color: #4a2a1a;
+            color: #8a5a4a;
+        }
+        .cart-actions .clear-btn:hover {
+            border-color: #8a3f2a;
+            color: #e06040;
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px 10px 20px;
+            }
+            .logo-text {
+                font-size: 0.9rem;
+            }
+            .logo-text small {
+                font-size: 0.4rem;
+            }
+            .controls {
+                gap: 6px;
+            }
+            .products {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .toast {
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+                font-size: 0.45rem;
+                padding: 12px 14px;
+            }
+            .torch-container {
+                width: 36px;
+                height: 48px;
+            }
+            .torch {
+                font-size: 2.2rem;
+            }
+            .modal-grid {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            }
+            .modal-item .emoji {
+                font-size: 2rem;
+            }
+            .cart-item {
+                font-size: 0.4rem;
+                flex-wrap: wrap;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: #0a0604;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0604;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1a0e0a;
+            border: 1px solid #2a1610;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2a1610;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== ШАПКА ===== -->
+        <header class="header">
+            <div class="logo-area" id="torchContainer">
+                <div class="torch-container">
+                    <span class="torch" data-testid="logo-icon" id="torchIcon">🔥</span>
+                </div>
+                <div class="logo-text" data-testid="logo-text" id="logoText">
+                    Amazonia Medievalis
+                    <small data-testid="logo-sub">⚜️ ANNO DOMINI MCCCXLVII ⚜️</small>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="cart-badge" data-testid="cart-badge" id="cartBadge">
+                    🛒 <span data-testid="cart-count" class="cart-count">0</span>
+                </div>
+
+                <div class="lang-toggle" data-testid="lang-toggle">
+                    <button class="lang-btn active" data-lang="ru" onclick="switchLang('ru')">RU</button>
+                    <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+                    <button class="lang-btn" data-lang="la" onclick="switchLang('la')">LA</button>
+                </div>
+
+                <div class="currency-toggle" data-testid="currency-toggle">
+                    <button class="currency-btn active" data-currency="rub" onclick="switchCurrency('rub')">₽</button>
+                    <button class="currency-btn" data-currency="usd" onclick="switchCurrency('usd')">$</button>
+                    <button class="currency-btn" data-currency="ducat" onclick="switchCurrency('ducat')">⛃</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== ПОИСК ===== -->
+        <div class="search-bar" data-testid="search-bar">
+            <input type="text" placeholder="🔍 INQUISITIO..." data-testid="search-input" id="searchInput" />
+            <button data-testid="search-btn" id="searchBtn">⚔ SEARCH</button>
+        </div>
+
+        <!-- ===== КАТЕГОРИИ ===== -->
+        <nav class="categories" data-testid="categories" id="categoriesNav">
+            <a data-testid="cat-all" data-cat="all">📜 OMNIA</a>
+            <a data-testid="cat-clothing" data-cat="clothing">👕 VESTIS</a>
+            <a data-testid="cat-books" data-cat="books">📖 CODICES</a>
+            <a data-testid="category-inquisition" data-cat="inquisition">🔥 INQUISITIO</a>
+        </nav>
+
+        <!-- ===== ТОВАРЫ ===== -->
+        <div class="products" data-testid="products-grid" id="productGrid"></div>
+
+        <!-- ===== ПОДВАЛ ===== -->
+        <footer class="footer" data-testid="footer">
+            <span data-testid="footer-text">🏰 CITIUS QUAM PESTIS PER EUROPA</span>
+            <small data-testid="footer-small">© ANNO DOMINI MCCCXLVII — MMXXVI · AMAZONIA MEDIEVALIS · OMNIA PECCATA MEMORATA</small>
+        </footer>
+    </div>
+
+    <!-- ===== ТОСТ ===== -->
+    <div class="toast" data-testid="toast" id="toast">
+        <span data-testid="toast-message" id="toastMessage">🔥 SALVE, PECCATOR!</span>
+        <button class="toast-close" onclick="hideToast()">✕</button>
+    </div>
+
+    <!-- ===== МОДАЛКА С ФАКЕЛАМИ ===== -->
+    <div class="modal-overlay" id="torchModal">
+        <div class="modal">
+            <div class="modal-title">🔥 ВЫБЕРИ СИМВОЛ ОГНЯ 🔥</div>
+            <div class="modal-grid" id="torchGrid"></div>
+            <div class="hint">💡 КЛИКНИ НА ЛЮБОЙ — ОН СТАНЕТ ТВОИМ ФАКЕЛОМ</div>
+            <button class="modal-close-btn" onclick="closeTorchModal()">✕ ЗАКРЫТЬ</button>
+        </div>
+    </div>
+
+    <!-- ===== МОДАЛКА КОРЗИНЫ (СУНДУК) ===== -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal cart-modal">
+            <div class="modal-title">📦 СУНДУК ГРЕШНИКА</div>
+            <div class="cart-items" id="cartItems">
+                <div class="cart-empty">☠ КОРЗИНА ПУСТА<br />ДОБАВЬ ТОВАР, ГРЕШНИК!</div>
+            </div>
+            <div class="cart-total" id="cartTotal">ИТОГО: 0 ₽</div>
+            <div class="cart-actions">
+                <button class="clear-btn" onclick="clearCart()">✖ ОЧИСТИТЬ</button>
+                <button class="modal-close-btn" onclick="closeCartModal()">✕ ЗАКРЫТЬ</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ================================================================
+        //  ДАННЫЕ
+        // ================================================================
+
+        const PRODUCTS = {
+            ru: [
+                { id: 1, emoji: '👕', name: 'Футболка "Я пережил Чуму"', desc: 'Ограниченный тираж 1348 года. Подходит после любого апокалипсиса. 100% лён.',
+                    price: 600, oldPrice: null },
+                { id: 2, emoji: '📜', name: 'Свитки для уединения', desc: 'Пока сидишь — читаешь. Мудрые изречения и забавные истории. Два в одном!',
+                    price: 333, oldPrice: null }
+            ],
+            en: [
+                { id: 1, emoji: '👕', name: 'T-Shirt "I Survived the Plague"', desc: 'Limited edition from 1348. Fits after any apocalypse. 100% linen.',
+                    price: 600, oldPrice: null },
+                { id: 2, emoji: '📜', name: 'Scrolls for Solitude', desc: 'Read while you sit. Wise sayings and funny stories. Two in one!',
+                    price: 333, oldPrice: null }
+            ],
+            la: [
+                { id: 1, emoji: '👕', name: 'TUNICA "PESTEM SUPERVIVI"', desc: 'Editio limitata anni 1348. Aptissima post quemlibet apocalypsin. 100% linum.',
+                    price: 600, oldPrice: null },
+                { id: 2, emoji: '📜', name: 'VOLUMINA SOLITUDINI', desc: 'Dum sedes, legis. Sententiae sapientes et fabulae iocosae. Duo in uno!',
+                    price: 333, oldPrice: null }
+            ]
+        };
+
+        const EXCHANGE_RATES = { rub: 1, usd: 0.011, ducat: 0.008 };
+        const CURRENCY_SYMBOLS = { rub: '₽', usd: '$', ducat: '⛃' };
+
+        const TORCH_VARIANTS = [
+            { emoji: '🔥', label: 'Классический' },
+            { emoji: '✸', label: 'Искра' },
+            { emoji: '⚡', label: 'Молния' },
+            { emoji: '🌋', label: 'Вулкан' },
+            { emoji: '☄️', label: 'Метеор' },
+            { emoji: '💥', label: 'Взрыв' },
+            { emoji: '✨', label: 'Магия' },
+            { emoji: '🌟', label: 'Звезда' },
+            { emoji: '🌞', label: 'Солнце' }
+        ];
+
+        // ================================================================
+        //  UI-ТЕКСТЫ (все языки)
+        // ================================================================
+        const UI_TEXTS = {
+            ru: {
+                searchPlaceholder: '🔍 Поиск товара...',
+                searchBtn: '⚔️ Искать',
+                catAll: '📜 Все товары',
+                catClothing: '👕 Одежда',
+                catBooks: '📖 Свитки',
+                catInquisition: '🔥 Инквизиция',
+                addBtn: 'Добавить в корзину',
+                footerText: '🏰 Доставляем быстрее, чем Чума по Европе',
+                footerSmall: '© 1347 — 2026 · Amazonia Medievalis · Все грехи записаны',
+                toastDefault: '🔥 Добро пожаловать, грешник!',
+                toastAdd: (name) => `🛒 «${name}» добавлен в корзину!`,
+                toastRemove: (name) => `🗑️ «${name}» удалён из корзины!`,
+                inquisitionAlert: '🔥 Святая инквизиция запросила ваш IP. Продолжить?',
+                cartEmpty: '☠ Корзина пуста. Добавь товар, грешник!',
+                cartItems: (names) => `🛒 В корзине грешника: ${names}`,
+                cartCleared: '☠ Корзина очищена! Все грехи смыты... пока.',
+                searchEmpty: '🔍 Напиши что-нибудь, грешник!',
+                searchFound: (count) => `🔍 Найдено ${count} товаров!`,
+                searchNotFound: '☠ Ничего не найдено. Попробуй "футболка" или "свитки"',
+                torchModalTitle: '🔥 ВЫБЕРИ СИМВОЛ ОГНЯ 🔥',
+                torchHint: '💡 КЛИКНИ НА ЛЮБОЙ — ОН СТАНЕТ ТВОИМ ФАКЕЛОМ',
+                torchClose: '✕ ЗАКРЫТЬ',
+                cartTitle: '📦 СУНДУК ГРЕШНИКА',
+                cartTotal: 'ИТОГО:',
+                cartEmptyText: '☠ КОРЗИНА ПУСТА\nДОБАВЬ ТОВАР, ГРЕШНИК!',
+                cartClearBtn: '✖ ОЧИСТИТЬ',
+                cartCloseBtn: '✕ ЗАКРЫТЬ',
+                cartItemRemove: '✕',
+            },
+            en: {
+                searchPlaceholder: '🔍 Search for items...',
+                searchBtn: '⚔️ Search',
+                catAll: '📜 All Items',
+                catClothing: '👕 Clothing',
+                catBooks: '📖 Scrolls',
+                catInquisition: '🔥 Inquisition',
+                addBtn: 'Add to Cart',
+                footerText: '🏰 We deliver faster than the Plague across Europe',
+                footerSmall: '© 1347 — 2026 · Amazonia Medievalis · All sins are recorded',
+                toastDefault: '🔥 Welcome, sinner!',
+                toastAdd: (name) => `🛒 «${name}» added to cart!`,
+                toastRemove: (name) => `🗑️ «${name}» removed from cart!`,
+                inquisitionAlert: '🔥 The Holy Inquisition has requested your IP. Continue?',
+                cartEmpty: '☠ The cart is empty. Add an item, sinner!',
+                cartItems: (names) => `🛒 In the sinner\'s cart: ${names}`,
+                cartCleared: '☠ Cart cleared! All sins are washed away... for now.',
+                searchEmpty: '🔍 Write something, sinner!',
+                searchFound: (count) => `🔍 Found ${count} items!`,
+                searchNotFound: '☠ Nothing found. Try "shirt" or "scrolls"',
+                torchModalTitle: '🔥 CHOOSE YOUR FIRE SYMBOL 🔥',
+                torchHint: '💡 CLICK ANY — IT BECOMES YOUR TORCH',
+                torchClose: '✕ CLOSE',
+                cartTitle: '📦 SINNER\'S CHEST',
+                cartTotal: 'TOTAL:',
+                cartEmptyText: '☠ CART IS EMPTY\nADD AN ITEM, SINNER!',
+                cartClearBtn: '✖ CLEAR',
+                cartCloseBtn: '✕ CLOSE',
+                cartItemRemove: '✕',
+            },
+            la: {
+                searchPlaceholder: '🔍 QUAERE MERCEM...',
+                searchBtn: '⚔️ QUAERE',
+                catAll: '📜 OMNIA',
+                catClothing: '👕 VESTIS',
+                catBooks: '📖 CODICES',
+                catInquisition: '🔥 INQUISITIO',
+                addBtn: 'AD CARRUM',
+                footerText: '🏰 CITIUS QUAM PESTIS PER EUROPA',
+                footerSmall: '© ANNO DOMINI MCCCXLVII — MMXXVI · AMAZONIA MEDIEVALIS · OMNIA PECCATA MEMORATA',
+                toastDefault: '🔥 SALVE, PECCATOR!',
+                toastAdd: (name) => `🛒 «${name}» AD CARRUM ADDITUM!`,
+                toastRemove: (name) => `🗑️ «${name}» DE CARRO REMOTUM!`,
+                inquisitionAlert: '🔥 INQUISITIO SANCTA IP TUUM PETIVIT. PERGERE?',
+                cartEmpty: '☠ CARRUS VACUUS EST. ADDE MERCEM, PECCATOR!',
+                cartItems: (names) => `🛒 IN CARRO PECCATORIS: ${names}`,
+                cartCleared: '☠ CARRUS PURGATUS! OMNIA PECCATA ABLUTA... PRO NUNC.',
+                searchEmpty: '🔍 ALIQUID SCRIBE, PECCATOR!',
+                searchFound: (count) => `🔍 ${count} MERCES INVENTAE!`,
+                searchNotFound: '☠ NIHIL INVENTUM. TENTA "TUNICA" VEL "VOLUMINA"',
+                torchModalTitle: '🔥 ELIGE SYMBOLUM IGNIS 🔥',
+                torchHint: '💡 CLICCA QUEMVIS — FIT FACE TUUM',
+                torchClose: '✕ CLAUDE',
+                cartTitle: '📦 ARCA PECCATORIS',
+                cartTotal: 'SUMMA:',
+                cartEmptyText: '☠ CARRUS VACUUS EST\nADDE MERCEM, PECCATOR!',
+                cartClearBtn: '✖ PURGARE',
+                cartCloseBtn: '✕ CLAUDE',
+                cartItemRemove: '✕',
+            }
+        };
+
+        // ================================================================
+        //  СОСТОЯНИЕ
+        // ================================================================
+        let currentLang = 'ru';
+        let currentCurrency = 'rub';
+        let cart = [];
+        let toastTimer = null;
+        let productContainer = document.getElementById('productGrid');
+        let currentTorch = '🔥';
+
+        // ================================================================
+        //  ФУНКЦИИ
+        // ================================================================
+
+        function switchLang(lang) {
+            if (lang === currentLang) return;
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+            renderProducts(currentLang);
+            updateUITexts(currentLang);
+            updateCartBadge();
+            updateTorchModalTexts(lang);
+            updateCartModalTexts(lang);
+        }
+
+        function switchCurrency(currency) {
+            if (currency === currentCurrency) return;
+            currentCurrency = currency;
+            document.querySelectorAll('.currency-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.currency-btn[data-currency="${currency}"]`).classList.add('active');
+            renderProducts(currentLang);
+        }
+
+        function renderProducts(lang) {
+            const products = PRODUCTS[lang] || PRODUCTS.ru;
+            const rate = EXCHANGE_RATES[currentCurrency] || 1;
+            const symbol = CURRENCY_SYMBOLS[currentCurrency] || '₽';
+
+            productContainer.innerHTML = '';
+            products.forEach(p => {
+                const convertedPrice = Math.round(p.price * rate * 100) / 100;
+                const priceStr = convertedPrice % 1 === 0 ? convertedPrice : convertedPrice.toFixed(2);
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-testid', `product-${p.id}`);
+                card.innerHTML = `
+                            <div class="product-emoji" data-testid="product-emoji-${p.id}">${p.emoji}</div>
+                            <div class="product-name" data-testid="product-name-${p.id}">${p.name}</div>
+                            <div class="product-desc" data-testid="product-desc-${p.id}">${p.desc}</div>
+                            <div class="product-price" data-testid="product-price-${p.id}">
+                                ${priceStr} ${symbol}
+                                ${p.oldPrice ? `<small>${Math.round(p.oldPrice * rate)} ${symbol}</small>` : ''}
+                            </div>
+                            <button class="add-btn" data-testid="add-btn-${p.id}" onclick="addToCart(${p.id})">
+                                ${UI_TEXTS[lang].addBtn}
+                            </button>
+                        `;
+                productContainer.appendChild(card);
+            });
+        }
+
+        function updateUITexts(lang) {
+            const t = UI_TEXTS[lang] || UI_TEXTS.ru;
+            document.querySelector('[data-testid="search-input"]').placeholder = t.searchPlaceholder;
+            document.querySelector('[data-testid="search-btn"]').innerHTML = t.searchBtn;
+
+            const cats = document.querySelectorAll('[data-testid^="cat-"]');
+            if (cats.length >= 4) {
+                cats[0].textContent = t.catAll;
+                cats[1].textContent = t.catClothing;
+                cats[2].textContent = t.catBooks;
+                cats[3].textContent = t.catInquisition;
+            }
+
+            document.querySelector('[data-testid="footer-text"]').textContent = t.footerText;
+            document.querySelector('[data-testid="footer-small"]').textContent = t.footerSmall;
+        }
+
+        // ================================================================
+        //  КОРЗИНА
+        // ================================================================
+
+        function addToCart(productId) {
+            const products = PRODUCTS[currentLang] || PRODUCTS.ru;
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            cart.push(product);
+            updateCartBadge();
+            showToast(UI_TEXTS[currentLang].toastAdd(product.name));
+        }
+
+        function removeFromCart(index) {
+            const t = UI_TEXTS[currentLang];
+            const name = cart[index].name;
+            cart.splice(index, 1);
+            updateCartBadge();
+            showToast(t.toastRemove(name));
+            renderCartModal();
+        }
+
+        function clearCart() {
+            const t = UI_TEXTS[currentLang];
+            if (cart.length === 0) return;
+            if (confirm('☠ ' + (currentLang === 'ru' ? 'Очистить корзину, грешник?' :
+                    currentLang === 'en' ? 'Clear the cart, sinner?' :
+                    'Purgare carrum, peccator?'))) {
+                cart = [];
+                updateCartBadge();
+                showToast(t.cartCleared);
+                renderCartModal();
+            }
+        }
+
+        function updateCartBadge() {
+            document.querySelector('[data-testid="cart-count"]').textContent = cart.length;
+        }
+
+        // ================================================================
+        //  МОДАЛКА КОРЗИНЫ (СУНДУК)
+        // ================================================================
+
+        function openCartModal() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            renderCartModal();
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function renderCartModal() {
+            const t = UI_TEXTS[currentLang];
+            const rate = EXCHANGE_RATES[currentCurrency] || 1;
+            const symbol = CURRENCY_SYMBOLS[currentCurrency] || '₽';
+            const container = document.getElementById('cartItems');
+            const totalEl = document.getElementById('cartTotal');
+
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="cart-empty">${t.cartEmptyText.replace(/\n/g, '<br />')}</div>`;
+                totalEl.textContent = `${t.cartTotal} 0 ${symbol}`;
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                const price = Math.round(item.price * rate * 100) / 100;
+                const priceStr = price % 1 === 0 ? price : price.toFixed(2);
+                total += price;
+                html += `
+                            <div class="cart-item">
+                                <span class="item-emoji">${item.emoji}</span>
+                                <span class="item-name">${item.name}</span>
+                                <span class="item-price">${priceStr} ${symbol}</span>
+                                <button class="item-remove" onclick="removeFromCart(${index})">${t.cartItemRemove}</button>
+                            </div>
+                        `;
+            });
+
+            const totalStr = total % 1 === 0 ? total : total.toFixed(2);
+            container.innerHTML = html;
+            totalEl.textContent = `${t.cartTotal} ${totalStr} ${symbol}`;
+        }
+
+        function updateCartModalTexts(lang) {
+            const t = UI_TEXTS[lang] || UI_TEXTS.ru;
+            document.querySelector('#cartModal .modal-title').textContent = t.cartTitle;
+            document.querySelector('#cartModal .clear-btn').textContent = t.cartClearBtn;
+            const closeBtns = document.querySelectorAll('#cartModal .modal-close-btn');
+            closeBtns.forEach(btn => btn.textContent = t.cartCloseBtn);
+            renderCartModal();
+        }
+
+        // ================================================================
+        //  МОДАЛКА ФАКЕЛОВ
+        // ================================================================
+
+        function openTorchModal() {
+            const modal = document.getElementById('torchModal');
+            const grid = document.getElementById('torchGrid');
+
+            grid.innerHTML = '';
+            TORCH_VARIANTS.forEach((item) => {
+                const div = document.createElement('div');
+                div.className = 'modal-item' + (item.emoji === currentTorch ? ' selected' : '');
+                div.innerHTML = `
+                            <span class="emoji">${item.emoji}</span>
+                            <span class="label">${item.label}</span>
+                        `;
+                div.addEventListener('click', () => selectTorch(item.emoji));
+                grid.appendChild(div);
+            });
+
+            updateTorchModalTexts(currentLang);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTorchModal() {
+            document.getElementById('torchModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function selectTorch(emoji) {
+            currentTorch = emoji;
+            document.getElementById('torchIcon').textContent = emoji;
+
+            document.querySelectorAll('.modal-item').forEach(el => el.classList.remove('selected'));
+            const items = document.querySelectorAll('.modal-item');
+            for (let i = 0; i < TORCH_VARIANTS.length; i++) {
+                if (TORCH_VARIANTS[i].emoji === emoji) {
+                    items[i].classList.add('selected');
+                }
+            }
+
+            showToast(`🔥 ${emoji} ${currentLang === 'ru' ? 'выбран как твой факел!' :
+                currentLang === 'en' ? 'chosen as your torch!' :
+                'electus est ut fax tua!'}`);
+        }
+
+        function updateTorchModalTexts(lang) {
+            const t = UI_TEXTS[lang] || UI_TEXTS.ru;
+            document.querySelector('#torchModal .modal-title').textContent = t.torchModalTitle;
+            document.querySelector('#torchModal .hint').textContent = t.torchHint;
+            document.querySelector('#torchModal .modal-close-btn').textContent = t.torchClose;
+        }
+
+        // ================================================================
+        //  ТОСТ
+        // ================================================================
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
+        }
+
+        function hideToast() {
+            document.getElementById('toast').classList.remove('show');
+            clearTimeout(toastTimer);
+        }
+
+        // ================================================================
+        //  ИНИЦИАЛИЗАЦИЯ
+        // ================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Клик по факелу открывает модалку
+            document.getElementById('torchContainer').addEventListener('click', openTorchModal);
+
+            // Клик по корзине открывает сундук
+            document.getElementById('cartBadge').addEventListener('click', openCartModal);
+
+            // Закрытие модалок по клику на оверлей
+            document.querySelectorAll('.modal-overlay').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            // Инквизиция
+            document.querySelector('[data-testid="category-inquisition"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                const t = UI_TEXTS[currentLang];
+                if (confirm(t.inquisitionAlert)) {
+                    showToast('🔥 INQUISITOR APPROBAT! / Инквизитор одобряет!');
+                } else {
+                    showToast('🙏 SALVATUS ES... ADHUC. / Вы спасены... пока.');
+                }
+            });
+
+            // Поиск
+            const searchBtn = document.getElementById('searchBtn');
+            const searchInput = document.getElementById('searchInput');
+            searchBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const query = searchInput.value.trim().toLowerCase();
+                const t = UI_TEXTS[currentLang];
+                if (!query) { showToast(t.searchEmpty); return; }
+
+                const products = PRODUCTS[currentLang] || PRODUCTS.ru;
+                const found = products.filter(p =>
+                    p.name.toLowerCase().includes(query) ||
+                    p.desc.toLowerCase().includes(query)
+                );
+                showToast(found.length > 0 ? t.searchFound(found.length) : t.searchNotFound);
+            });
+
+            // Enter в поиске
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    searchBtn.click();
+                }
+            });
+
+            renderProducts('ru');
+            updateUITexts('ru');
+            updateCartBadge();
+            setTimeout(() => showToast('🔥 SALVE, PECCATOR! / Добро пожаловать, грешник!'), 600);
+        });
+
+        // Глобальные функции для onclick
+        window.switchLang = switchLang;
+        window.switchCurrency = switchCurrency;
+        window.addToCart = addToCart;
+        window.removeFromCart = removeFromCart;
+        window.clearCart = clearCart;
+        window.hideToast = hideToast;
+        window.openTorchModal = openTorchModal;
+        window.closeTorchModal = closeTorchModal;
+        window.openCartModal = openCartModal;
+        window.closeCartModal = closeCartModal;
+        window.selectTorch = selectTorch;
+    </script>
+
+</body>
+</html>
