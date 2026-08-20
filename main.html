@@ -35,7 +35,7 @@
             background: #1a100c;
             background-image: radial-gradient(ellipse at 30% 20%, #2a1812 0%, #1a100c 80%);
             border: 4px solid #5a3a2a;
-            padding: 20px 20px 30px;
+            padding: 0 20px 30px;
             box-shadow: 0 0 60px rgba(100, 30, 15, 0.25), inset 0 0 60px rgba(30, 10, 5, 0.3);
             position: relative;
             image-rendering: pixelated;
@@ -53,7 +53,39 @@
             opacity: 0.4;
         }
 
-        /* ===== ШАПКА (НАЗВАНИЕ ПО ЦЕНТРУ) ===== */
+        /* ================================================================
+           БЕГУЩАЯ СТРОКА
+           ================================================================ */
+
+        .marquee-wrap {
+            background: #2a1610;
+            border-bottom: 2px solid #5a2a1a;
+            padding: 6px 0;
+            overflow: hidden;
+            font-size: 0.45rem;
+            color: #f0d5a0;
+            letter-spacing: 1px;
+            margin: 0 -20px 12px -20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        .marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scrollMarquee 22s linear infinite;
+            padding-left: 100%;
+        }
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ================================================================
+           ШАПКА
+           ================================================================ */
+
         .header {
             display: flex;
             flex-direction: column;
@@ -62,6 +94,7 @@
             padding-bottom: 14px;
             margin-bottom: 18px;
             gap: 10px;
+            padding-top: 14px;
         }
 
         .logo-area {
@@ -73,7 +106,6 @@
             cursor: default;
         }
 
-        /* ===== ФАКЕЛ ИЗ GIF ===== */
         .torch-container {
             width: 48px;
             height: 64px;
@@ -91,7 +123,6 @@
             display: block;
         }
 
-        /* ===== ЛОГОТИП ===== */
         .logo-text {
             font-family: 'Press Start 2P', 'Courier New', monospace;
             font-size: 1.3rem;
@@ -111,7 +142,6 @@
             text-shadow: 0 0 20px rgba(150, 100, 60, 0.1);
         }
 
-        /* ===== УПРАВЛЕНИЕ ===== */
         .controls {
             display: flex;
             gap: 8px;
@@ -158,7 +188,6 @@
             background: #1a0e0a;
         }
 
-        /* ===== СУНДУК ===== */
         .cart-badge {
             background: #0f0806;
             color: #f0ddd0;
@@ -193,7 +222,6 @@
             border: 1px solid #5a3a2a;
         }
 
-        /* ===== ПОИСК ===== */
         .search-bar {
             display: flex;
             gap: 8px;
@@ -246,7 +274,6 @@
             box-shadow: 0 1px 0 #050302;
         }
 
-        /* ===== КАТЕГОРИИ ===== */
         .categories {
             display: flex;
             gap: 6px 14px;
@@ -284,7 +311,6 @@
             border-color: #6a2f1f;
         }
 
-        /* ===== ТОВАРЫ ===== */
         .products {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -325,6 +351,7 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: 0.5px;
             line-height: 1.4;
+            text-align: center;
         }
 
         .product-desc {
@@ -380,7 +407,6 @@
             box-shadow: 0 1px 0 #0a0604;
         }
 
-        /* ===== ТОСТ ===== */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -422,7 +448,6 @@
             color: #f0e8e0;
         }
 
-        /* ===== ПОДВАЛ ===== */
         .footer {
             margin-top: 30px;
             padding-top: 16px;
@@ -445,7 +470,6 @@
             color: #b0a090;
         }
 
-        /* ===== МОДАЛКИ ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -501,7 +525,6 @@
             border-color: #6a3f2a;
         }
 
-        /* ===== МОДАЛКА СУНДУКА ===== */
         .cart-modal .modal-title {
             font-size: 0.9rem;
             color: #f0d5a0;
@@ -601,60 +624,66 @@
             color: #e06040;
         }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 12px 10px 20px;
+        .discount-badge {
+            display: inline-block;
+            background: #2a1610;
+            border: 1px solid #e08050;
+            color: #f0d5a0;
+            padding: 2px 10px;
+            font-size: 0.5rem;
+            border-radius: 3px;
+            margin-left: 8px;
+            animation: pulseDiscount 1.5s ease-in-out infinite;
+        }
+        @keyframes pulseDiscount {
+            0%,
+            100% {
+                opacity: 1;
             }
-            .logo-text {
-                font-size: 0.9rem;
-            }
-            .logo-text small {
-                font-size: 0.4rem;
-            }
-            .controls {
-                gap: 6px;
-            }
-            .products {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-            .toast {
-                left: 12px;
-                right: 12px;
-                bottom: 12px;
-                font-size: 0.45rem;
-                padding: 12px 14px;
-            }
-            .torch-container {
-                width: 36px;
-                height: 48px;
+            50% {
+                opacity: 0.5;
             }
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-            background: #0a0604;
+        @media (max-width: 600px) {
+            .container { padding: 0 10px 20px; }
+            .marquee-wrap { margin: 0 -10px 12px -10px; }
+            .logo-text { font-size: 0.9rem; }
+            .logo-text small { font-size: 0.4rem; }
+            .controls { gap: 6px; }
+            .products { grid-template-columns: 1fr; gap: 14px; }
+            .toast { left: 12px; right: 12px; bottom: 12px; font-size: 0.45rem; padding: 12px 14px; }
+            .torch-container { width: 36px; height: 48px; }
         }
-        ::-webkit-scrollbar-track {
-            background: #0a0604;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1a0e0a;
-            border: 1px solid #2a1610;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #2a1610;
-        }
+
+        ::-webkit-scrollbar { width: 8px; background: #0a0604; }
+        ::-webkit-scrollbar-track { background: #0a0604; }
+        ::-webkit-scrollbar-thumb { background: #1a0e0a; border: 1px solid #2a1610; }
+        ::-webkit-scrollbar-thumb:hover { background: #2a1610; }
     </style>
 </head>
 <body>
 
     <div class="container">
 
-        <!-- ===== ШАПКА ===== -->
+        <!-- ================================================================
+        БЕГУЩАЯ СТРОКА (ТЕПЕРЬ ЧЕРЕЗ JS)
+        ================================================================ -->
+
+        <div class="marquee-wrap">
+            <div class="marquee" id="marqueeText">
+                ⚜️ КУПИ 3 ИНДУЛЬГЕНЦИИ — ПОЛУЧИ 10% СКИДКИ НА ВЕСЬ ЗАКАЗ! ⚜️
+                &nbsp;&nbsp;•&nbsp;&nbsp;
+                🕯️ ПРЕДЛОЖЕНИЕ ДЕЙСТВУЕТ ДО КОНЦА НЕДЕЛИ. ИНКВИЗИЦИЯ СЛЕДИТ ЗА ВАМИ.
+            </div>
+        </div>
+
+        <!-- ================================================================
+        ШАПКА
+        ================================================================ -->
+
         <header class="header">
             <div class="logo-area">
-                <!-- ===== ФАКЕЛ ИЗ GIF ===== -->
                 <div class="torch-container">
                     <img src="Torch_Gif.gif" alt="Факел" data-testid="logo-icon" />
                 </div>
@@ -683,13 +712,19 @@
             </div>
         </header>
 
-        <!-- ===== ПОИСК ===== -->
+        <!-- ================================================================
+        ПОИСК
+        ================================================================ -->
+
         <div class="search-bar" data-testid="search-bar">
             <input type="text" placeholder="🔍 Поиск товара..." data-testid="search-input" id="searchInput" />
             <button data-testid="search-btn" id="searchBtn">⚔️ Искать</button>
         </div>
 
-        <!-- ===== КАТЕГОРИИ ===== -->
+        <!-- ================================================================
+        КАТЕГОРИИ
+        ================================================================ -->
+
         <nav class="categories" data-testid="categories" id="categoriesNav">
             <a data-testid="cat-all" data-cat="all">📜 Все товары</a>
             <a data-testid="cat-clothing" data-cat="clothing">👕 Одежда</a>
@@ -697,23 +732,35 @@
             <a data-testid="category-inquisition" data-cat="inquisition">🔥 Инквизиция</a>
         </nav>
 
-        <!-- ===== ТОВАРЫ ===== -->
+        <!-- ================================================================
+        ТОВАРЫ (ТОЛЬКО 5)
+        ================================================================ -->
+
         <div class="products" data-testid="products-grid" id="productGrid"></div>
 
-        <!-- ===== ПОДВАЛ ===== -->
+        <!-- ================================================================
+        ПОДВАЛ
+        ================================================================ -->
+
         <footer class="footer" data-testid="footer">
             <span data-testid="footer-text">🏰 Доставляем быстрее, чем Чума по Европе</span>
-            <small data-testid="footer-small">© 1347 — 2026 · Amazonia Medievalis · Все грехи записаны</small>
+            <small data-testid="footer-small">© 1347 — 2026 · Amazonia Medievalis · Все грехи прощены</small>
         </footer>
     </div>
 
-    <!-- ===== ТОСТ ===== -->
+    <!-- ================================================================
+    ТОСТ
+    ================================================================ -->
+
     <div class="toast" data-testid="toast" id="toast">
         <span data-testid="toast-message" id="toastMessage">🔥 SALVE, PECCATOR!</span>
         <button class="toast-close" onclick="hideToast()">✕</button>
     </div>
 
-    <!-- ===== МОДАЛКА СУНДУКА ===== -->
+    <!-- ================================================================
+    МОДАЛКА СУНДУКА
+    ================================================================ -->
+
     <div class="modal-overlay" id="cartModal">
         <div class="modal cart-modal">
             <div class="modal-title">📦 СУНДУК ГРЕШНИКА</div>
@@ -730,27 +777,45 @@
 
     <script>
         // ================================================================
-        //  ДАННЫЕ
+        //  ДАННЫЕ — ТОЛЬКО 5 ТОВАРОВ
         // ================================================================
 
         const PRODUCTS = {
             ru: [
-                { id: 1, emoji: '🧥', name: 'Мантия "Переживший Чуму"', desc: 'Ограниченный тираж 1348 года. Согреет после любого апокалипсиса. 100% шерсть.',
+                { id: 1, emoji: '🧻', name: 'Свитки для уединения', desc: 'Пока сидишь — читаешь. Мудрые изречения и забавные истории. Два в одном!',
+                    price: 333, oldPrice: null },
+                { id: 2, emoji: '🧥', name: 'Мантия "Переживший Чуму"', desc: 'Ограниченный тираж 1348 года. Согреет после любого апокалипсиса. 100% шерсть.',
                     price: 600, oldPrice: null },
-                { id: 2, emoji: '🧻', name: 'Свитки для уединения', desc: 'Пока сидишь — читаешь. Мудрые изречения и забавные истории. Два в одном!',
-                    price: 333, oldPrice: null }
+                { id: 3, emoji: '🔒', name: 'Пояс верности', desc: 'Первое в мире средство контрацепции. Надёжно, как каменная стена.',
+                    price: 1500, oldPrice: null },
+                { id: 4, emoji: '📜', name: 'Индульгенция на неделю', desc: 'Все грехи прощены до следующего вторника. Действует только на этой неделе.',
+                    price: 500, oldPrice: null },
+                { id: 5, emoji: '🐴', name: 'Запасная лошадь', desc: 'Никогда не знаешь, когда понадобится.',
+                    price: 1800, oldPrice: 2500 }
             ],
             en: [
-                { id: 1, emoji: '🧥', name: 'Cloak "Plague Survivor"', desc: 'Limited edition from 1348. Warms after any apocalypse. 100% wool.',
+                { id: 1, emoji: '🧻', name: 'Scrolls for Solitude', desc: 'Read while you sit. Wise sayings and funny stories. Two in one!',
+                    price: 333, oldPrice: null },
+                { id: 2, emoji: '🧥', name: 'Cloak "Plague Survivor"', desc: 'Limited edition from 1348. Warms after any apocalypse. 100% wool.',
                     price: 600, oldPrice: null },
-                { id: 2, emoji: '🧻', name: 'Scrolls for Solitude', desc: 'Read while you sit. Wise sayings and funny stories. Two in one!',
-                    price: 333, oldPrice: null }
+                { id: 3, emoji: '🔒', name: 'Chastity Belt', desc: 'The world\'s first contraceptive. As reliable as a stone wall.',
+                    price: 1500, oldPrice: null },
+                { id: 4, emoji: '📜', name: 'Indulgence for a Week', desc: 'All sins forgiven until next Tuesday. Valid only this week.',
+                    price: 500, oldPrice: null },
+                { id: 5, emoji: '🐴', name: 'Spare Horse', desc: 'You never know when you\'ll need it.',
+                    price: 1800, oldPrice: 2500 }
             ],
             la: [
-                { id: 1, emoji: '🧥', name: 'PALLIUM "PESTEM SUPERVIVI"', desc: 'Editio limitata anni 1348. Post quemlibet apocalypsin calefacit. 100% lana.',
+                { id: 1, emoji: '🧻', name: 'VOLUMINA SOLITUDINI', desc: 'Dum sedes, legis. Sententiae sapientes et fabulae iocosae. Duo in uno!',
+                    price: 333, oldPrice: null },
+                { id: 2, emoji: '🧥', name: 'PALLIUM "PESTEM SUPERVIVI"', desc: 'Editio limitata anni 1348. Post quemlibet apocalypsin calefacit. 100% lana.',
                     price: 600, oldPrice: null },
-                { id: 2, emoji: '🧻', name: 'VOLUMINA SOLITUDINI', desc: 'Dum sedes, legis. Sententiae sapientes et fabulae iocosae. Duo in uno!',
-                    price: 333, oldPrice: null }
+                { id: 3, emoji: '🔒', name: 'CINGULUM CASTITATIS', desc: 'Primum in mundo contraceptivum. Firmum ut murus lapideus.',
+                    price: 1500, oldPrice: null },
+                { id: 4, emoji: '📜', name: 'INDULGENTIA HEBDOMADALIS', desc: 'Omnia peccata dimissa usque ad proximam diem Martis. Valet tantum hac hebdomade.',
+                    price: 500, oldPrice: null },
+                { id: 5, emoji: '🐴', name: 'EQUUS SUBSIDIARIUS', desc: 'Numquam scis quando opus erit.',
+                    price: 1800, oldPrice: 2500 }
             ]
         };
 
@@ -758,7 +823,7 @@
         const CURRENCY_SYMBOLS = { rub: '₽', usd: '$', ducat: '⛃' };
 
         // ================================================================
-        //  UI-ТЕКСТЫ
+        //  UI-ТЕКСТЫ — ДОБАВЛЕН marquee
         // ================================================================
         const UI_TEXTS = {
             ru: {
@@ -770,7 +835,7 @@
                 catInquisition: '🔥 Инквизиция',
                 addBtn: 'Добавить в сундук',
                 footerText: '🏰 Доставляем быстрее, чем Чума по Европе',
-                footerSmall: '© 1347 — 2026 · Amazonia Medievalis · Все грехи записаны',
+                footerSmall: '© 1347 — 2026 · Amazonia Medievalis · Все грехи прощены',
                 toastDefault: '🔥 Добро пожаловать, грешник!',
                 toastAdd: (name) => `📦 «${name}» добавлен в сундук!`,
                 toastRemove: (name) => `🗑️ «${name}» удалён из сундука!`,
@@ -779,13 +844,15 @@
                 cartCleared: '☠ Сундук очищен! Все грехи смыты... пока.',
                 searchEmpty: '🔍 Напиши что-нибудь, грешник!',
                 searchFound: (count) => `🔍 Найдено ${count} товаров!`,
-                searchNotFound: '☠ Ничего не найдено. Попробуй "мантия" или "свитки"',
+                searchNotFound: '☠ Ничего не найдено. Попробуй "свитки", "мантию", "пояс", "индульгенцию" или "лошадь"',
                 cartTitle: '📦 СУНДУК ГРЕШНИКА',
                 cartTotal: 'ИТОГО:',
                 cartEmptyText: '☠ СУНДУК ПУСТ\nДОБАВЬ ТОВАР, ГРЕШНИК!',
                 cartClearBtn: '✖ ОЧИСТИТЬ',
                 cartCloseBtn: '✕ ЗАКРЫТЬ',
                 cartItemRemove: '✕',
+                discountToast: '🔥 ТЫ ПОЛУЧИЛ СКИДКУ 10%! Инквизиция гордится тобой!',
+                marquee: '⚜️ КУПИ 3 ИНДУЛЬГЕНЦИИ — ПОЛУЧИ 10% СКИДКИ НА ВЕСЬ ЗАКАЗ! ⚜️ • 🕯️ ПРЕДЛОЖЕНИЕ ДЕЙСТВУЕТ ДО КОНЦА НЕДЕЛИ. ИНКВИЗИЦИЯ СЛЕДИТ ЗА ВАМИ.',
             },
             en: {
                 searchPlaceholder: '🔍 Search for items...',
@@ -796,7 +863,7 @@
                 catInquisition: '🔥 Inquisition',
                 addBtn: 'Add to Chest',
                 footerText: '🏰 We deliver faster than the Plague across Europe',
-                footerSmall: '© 1347 — 2026 · Amazonia Medievalis · All sins are recorded',
+                footerSmall: '© 1347 — 2026 · Amazonia Medievalis · All sins forgiven',
                 toastDefault: '🔥 Welcome, sinner!',
                 toastAdd: (name) => `📦 «${name}» added to the chest!`,
                 toastRemove: (name) => `🗑️ «${name}» removed from the chest!`,
@@ -805,13 +872,15 @@
                 cartCleared: '☠ Chest cleared! All sins are washed away... for now.',
                 searchEmpty: '🔍 Write something, sinner!',
                 searchFound: (count) => `🔍 Found ${count} items!`,
-                searchNotFound: '☠ Nothing found. Try "cloak" or "scrolls"',
+                searchNotFound: '☠ Nothing found. Try "scrolls", "cloak", "belt", "indulgence" or "horse"',
                 cartTitle: '📦 SINNER\'S CHEST',
                 cartTotal: 'TOTAL:',
                 cartEmptyText: '☠ CHEST IS EMPTY\nADD AN ITEM, SINNER!',
                 cartClearBtn: '✖ CLEAR',
                 cartCloseBtn: '✕ CLOSE',
                 cartItemRemove: '✕',
+                discountToast: '🔥 YOU GOT 10% DISCOUNT! The Inquisition is proud of you!',
+                marquee: '⚜️ BUY 3 INDULGENCES — GET 10% OFF YOUR ENTIRE ORDER! ⚜️ • 🕯️ OFFER VALID UNTIL THE END OF THE WEEK. THE INQUISITION IS WATCHING YOU.',
             },
             la: {
                 searchPlaceholder: '🔍 QUAERE MERCEM...',
@@ -822,7 +891,7 @@
                 catInquisition: '🔥 INQUISITIO',
                 addBtn: 'AD ARCAM',
                 footerText: '🏰 CITIUS QUAM PESTIS PER EUROPA',
-                footerSmall: '© ANNO DOMINI MCCCXLVII — MMXXVI · AMAZONIA MEDIEVALIS · OMNIA PECCATA MEMORATA',
+                footerSmall: '© ANNO DOMINI MCCCXLVII — MMXXVI · AMAZONIA MEDIEVALIS · OMNIA PECCATA DIMISSA',
                 toastDefault: '🔥 SALVE, PECCATOR!',
                 toastAdd: (name) => `📦 «${name}» AD ARCAM ADDITUM!`,
                 toastRemove: (name) => `🗑️ «${name}» DE ARCA REMOTUM!`,
@@ -831,13 +900,15 @@
                 cartCleared: '☠ ARCA PURGATA! OMNIA PECCATA ABLUTA... PRO NUNC.',
                 searchEmpty: '🔍 ALIQUID SCRIBE, PECCATOR!',
                 searchFound: (count) => `🔍 ${count} MERCES INVENTAE!`,
-                searchNotFound: '☠ NIHIL INVENTUM. TENTA "PALLIUM" VEL "VOLUMINA"',
+                searchNotFound: '☠ NIHIL INVENTUM. TENTA "VOLUMINA", "PALLIUM", "CINGULUM", "INDULGENTIA" VEL "EQUUS"',
                 cartTitle: '📦 ARCA PECCATORIS',
                 cartTotal: 'SUMMA:',
                 cartEmptyText: '☠ ARCA VACUA EST\nADDE MERCEM, PECCATOR!',
                 cartClearBtn: '✖ PURGARE',
                 cartCloseBtn: '✕ CLAUDE',
                 cartItemRemove: '✕',
+                discountToast: '🔥 10% REMISSIONEM ACCEPISTI! Inquisitio de te superba est!',
+                marquee: '⚜️ EMITTE 3 INDULGENTIAS — ACCIPE 10% REMISSIONEM IN TOTO ORDINE! ⚜️ • 🕯️ OFFERTUM VALET USQUE AD FINEM HEBDOMADAE. INQUISITIO TE OBSERVAT.',
             }
         };
 
@@ -849,6 +920,7 @@
         let cart = [];
         let toastTimer = null;
         let productContainer = document.getElementById('productGrid');
+        let discountActive = false;
 
         // ================================================================
         //  ФУНКЦИИ
@@ -861,6 +933,7 @@
             document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
             renderProducts(currentLang);
             updateUITexts(currentLang);
+            updateMarquee(); // <-- обновляем бегущую строку
             updateCartBadge();
             updateCartModalTexts(lang);
         }
@@ -882,6 +955,7 @@
             products.forEach(p => {
                 const convertedPrice = Math.round(p.price * rate * 100) / 100;
                 const priceStr = convertedPrice % 1 === 0 ? convertedPrice : convertedPrice.toFixed(2);
+                const oldPriceStr = p.oldPrice ? Math.round(p.oldPrice * rate) : null;
 
                 const card = document.createElement('div');
                 card.className = 'product-card';
@@ -892,7 +966,7 @@
                     <div class="product-desc" data-testid="product-desc-${p.id}">${p.desc}</div>
                     <div class="product-price" data-testid="product-price-${p.id}">
                         ${priceStr} ${symbol}
-                        ${p.oldPrice ? `<small>${Math.round(p.oldPrice * rate)} ${symbol}</small>` : ''}
+                        ${oldPriceStr ? `<small>${oldPriceStr} ${symbol}</small>` : ''}
                     </div>
                     <button class="add-btn" data-testid="add-btn-${p.id}" onclick="addToCart(${p.id})">
                         ${UI_TEXTS[lang].addBtn}
@@ -925,6 +999,46 @@
         }
 
         // ================================================================
+        //  ОБНОВЛЕНИЕ БЕГУЩЕЙ СТРОКИ
+        // ================================================================
+
+        function updateMarquee() {
+            const t = UI_TEXTS[currentLang] || UI_TEXTS.ru;
+            const marqueeEl = document.getElementById('marqueeText');
+            if (marqueeEl) {
+                marqueeEl.textContent = t.marquee;
+            }
+        }
+
+        // ================================================================
+        //  ЛОГИКА СКИДКИ
+        // ================================================================
+
+        function countIndulgences() {
+            return cart.filter(item => item.id === 4).length;
+        }
+
+        function applyDiscount(price, rate) {
+            const indulgenceCount = countIndulgences();
+            if (indulgenceCount >= 3) {
+                return Math.round(price * rate * 0.9 * 100) / 100;
+            }
+            return Math.round(price * rate * 100) / 100;
+        }
+
+        function checkDiscount() {
+            const count = countIndulgences();
+            const wasActive = discountActive;
+            discountActive = count >= 3;
+
+            if (discountActive && !wasActive) {
+                const t = UI_TEXTS[currentLang];
+                showToast(t.discountToast);
+            }
+            return discountActive;
+        }
+
+        // ================================================================
         //  КОРЗИНА / СУНДУК
         // ================================================================
 
@@ -934,7 +1048,11 @@
             if (!product) return;
             cart.push(product);
             updateCartBadge();
+            checkDiscount();
             showToast(UI_TEXTS[currentLang].toastAdd(product.name));
+            if (discountActive) {
+                renderCartModal();
+            }
         }
 
         function removeFromCart(index) {
@@ -942,6 +1060,7 @@
             const name = cart[index].name;
             cart.splice(index, 1);
             updateCartBadge();
+            checkDiscount();
             showToast(t.toastRemove(name));
             renderCartModal();
         }
@@ -954,6 +1073,7 @@
                 'Purgare arcam, peccator?';
             if (confirm('☠ ' + msg)) {
                 cart = [];
+                discountActive = false;
                 updateCartBadge();
                 showToast(t.cartCleared);
                 renderCartModal();
@@ -996,23 +1116,38 @@
 
             let html = '';
             let total = 0;
+            const indulgenceCount = countIndulgences();
+            const discount = indulgenceCount >= 3;
+
             cart.forEach((item, index) => {
-                const price = Math.round(item.price * rate * 100) / 100;
-                const priceStr = price % 1 === 0 ? price : price.toFixed(2);
+                const price = applyDiscount(item.price, rate);
                 total += price;
+                const priceStr = price % 1 === 0 ? price : price.toFixed(2);
+                const oldPrice = Math.round(item.price * rate * 100) / 100;
+                const oldPriceStr = oldPrice % 1 === 0 ? oldPrice : oldPrice.toFixed(2);
+
                 html += `
                     <div class="cart-item">
                         <span class="item-emoji">${item.emoji}</span>
                         <span class="item-name">${item.name}</span>
-                        <span class="item-price">${priceStr} ${symbol}</span>
+                        <span class="item-price">
+                            ${discount && oldPrice !== price ? `<span style="text-decoration:line-through;color:#6a5a4a;font-size:0.4rem;margin-right:4px;">${oldPriceStr}</span>` : ''}
+                            ${priceStr} ${symbol}
+                            ${discount && item.id === 4 ? '<span style="color:#88dd88;font-size:0.4rem;">(−10%)</span>' : ''}
+                        </span>
                         <button class="item-remove" onclick="removeFromCart(${index})">${t.cartItemRemove}</button>
                     </div>
                 `;
             });
 
+            let discountBadge = '';
+            if (discount) {
+                discountBadge = ` <span class="discount-badge">🔥 −10%</span>`;
+            }
+
             const totalStr = total % 1 === 0 ? total : total.toFixed(2);
             container.innerHTML = html;
-            totalEl.textContent = `${t.cartTotal} ${totalStr} ${symbol}`;
+            totalEl.innerHTML = `${t.cartTotal} ${totalStr} ${symbol}${discountBadge}`;
         }
 
         function updateCartModalTexts(lang) {
@@ -1052,10 +1187,8 @@
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
 
-            // Корзина
             document.getElementById('cartBadge').addEventListener('click', openCartModal);
 
-            // Закрытие модалок по клику на оверлей
             document.querySelectorAll('.modal-overlay').forEach(el => {
                 el.addEventListener('click', function(e) {
                     if (e.target === this) {
@@ -1065,7 +1198,6 @@
                 });
             });
 
-            // Инквизиция
             document.querySelector('[data-testid="category-inquisition"]').addEventListener('click', function(e) {
                 e.preventDefault();
                 const t = UI_TEXTS[currentLang];
@@ -1076,7 +1208,6 @@
                 }
             });
 
-            // Поиск
             const searchBtn = document.getElementById('searchBtn');
             const searchInput = document.getElementById('searchInput');
             searchBtn.addEventListener('click', function(e) {
@@ -1097,14 +1228,13 @@
                 if (e.key === 'Enter') searchBtn.click();
             });
 
-            // Старт
             renderProducts('ru');
             updateUITexts('ru');
+            updateMarquee();
             updateCartBadge();
             setTimeout(() => showToast('🔥 SALVE, PECCATOR! / Добро пожаловать, грешник!'), 600);
         });
 
-        // Глобальные функции для onclick
         window.switchLang = switchLang;
         window.switchCurrency = switchCurrency;
         window.addToCart = addToCart;
