@@ -6,7 +6,7 @@
     <title>🔥 Amazonia Medievalis</title>
     <style>
         /* ================================================================
-           ПИКСЕЛЬНЫЙ СРЕДНЕВЕКОВЫЙ СТИЛЬ
+           ПИКСЕЛЬНЫЙ СРЕДНЕВЕКОВЫЙ СТИЛЬ — ВЫСОКАЯ КОНТРАСТНОСТЬ
            ================================================================ */
 
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
@@ -53,7 +53,7 @@
             opacity: 0.4;
         }
 
-        /* ===== ШАПКА (НАЗВАНИЕ ПО ЦЕНТРУ) ===== */
+        /* ===== ШАПКА ===== */
         .header {
             display: flex;
             flex-direction: column;
@@ -73,7 +73,6 @@
             cursor: pointer;
         }
 
-        /* ===== ГОРЯЩИЙ ФАКЕЛ ===== */
         .torch-container {
             width: 48px;
             height: 64px;
@@ -114,7 +113,6 @@
             }
         }
 
-        /* ===== ЛОГОТИП ===== */
         .logo-text {
             font-family: 'Press Start 2P', 'Courier New', monospace;
             font-size: 1.3rem;
@@ -134,7 +132,6 @@
             text-shadow: 0 0 20px rgba(150, 100, 60, 0.1);
         }
 
-        /* ===== УПРАВЛЕНИЕ ===== */
         .controls {
             display: flex;
             gap: 8px;
@@ -181,7 +178,7 @@
             background: #1a0e0a;
         }
 
-        /* ===== КОРЗИНА ===== */
+        /* ===== СУНДУК (вместо корзины) ===== */
         .cart-badge {
             background: #0f0806;
             color: #f0ddd0;
@@ -216,7 +213,6 @@
             border: 1px solid #5a3a2a;
         }
 
-        /* ===== ПОИСК ===== */
         .search-bar {
             display: flex;
             gap: 8px;
@@ -269,7 +265,6 @@
             box-shadow: 0 1px 0 #050302;
         }
 
-        /* ===== КАТЕГОРИИ ===== */
         .categories {
             display: flex;
             gap: 6px 14px;
@@ -307,7 +302,6 @@
             border-color: #6a2f1f;
         }
 
-        /* ===== ТОВАРЫ ===== */
         .products {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -403,7 +397,6 @@
             box-shadow: 0 1px 0 #0a0604;
         }
 
-        /* ===== ТОСТ ===== */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -445,7 +438,6 @@
             color: #f0e8e0;
         }
 
-        /* ===== ПОДВАЛ ===== */
         .footer {
             margin-top: 30px;
             padding-top: 16px;
@@ -468,9 +460,7 @@
             color: #b0a090;
         }
 
-        /* ================================================================
-           МОДАЛЬНЫЕ ОКНА (ФАКЕЛЫ + КОРЗИНА-СУНДУК)
-           ================================================================ */
+        /* ===== МОДАЛКИ ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -509,7 +499,6 @@
             letter-spacing: 2px;
         }
 
-        /* ----- МОДАЛКА ФАКЕЛОВ ----- */
         .modal-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -574,7 +563,7 @@
             line-height: 1.6;
         }
 
-        /* ----- МОДАЛКА КОРЗИНЫ (СУНДУК) ----- */
+        /* ===== МОДАЛКА СУНДУКА ===== */
         .cart-modal .modal-title {
             font-size: 0.9rem;
             color: #f0d5a0;
@@ -674,7 +663,6 @@
             color: #e06040;
         }
 
-        /* ===== АДАПТИВ ===== */
         @media (max-width: 600px) {
             .container {
                 padding: 12px 10px 20px;
@@ -751,8 +739,9 @@
             </div>
 
             <div class="controls">
+                <!-- СУНДУК вместо корзины -->
                 <div class="cart-badge" data-testid="cart-badge" id="cartBadge">
-                    🛒 <span data-testid="cart-count" class="cart-count">0</span>
+                    📦 <span data-testid="cart-count" class="cart-count">0</span>
                 </div>
 
                 <div class="lang-toggle" data-testid="lang-toggle">
@@ -771,16 +760,16 @@
 
         <!-- ===== ПОИСК ===== -->
         <div class="search-bar" data-testid="search-bar">
-            <input type="text" placeholder="🔍 INQUISITIO..." data-testid="search-input" id="searchInput" />
-            <button data-testid="search-btn" id="searchBtn">⚔ SEARCH</button>
+            <input type="text" placeholder="🔍 Поиск товара..." data-testid="search-input" id="searchInput" />
+            <button data-testid="search-btn" id="searchBtn">⚔️ Искать</button>
         </div>
 
         <!-- ===== КАТЕГОРИИ ===== -->
         <nav class="categories" data-testid="categories" id="categoriesNav">
-            <a data-testid="cat-all" data-cat="all">📜 OMNIA</a>
-            <a data-testid="cat-clothing" data-cat="clothing">👕 VESTIS</a>
-            <a data-testid="cat-books" data-cat="books">📖 CODICES</a>
-            <a data-testid="category-inquisition" data-cat="inquisition">🔥 INQUISITIO</a>
+            <a data-testid="cat-all" data-cat="all">📜 Все товары</a>
+            <a data-testid="cat-clothing" data-cat="clothing">👕 Одежда</a>
+            <a data-testid="cat-books" data-cat="books">📖 Свитки</a>
+            <a data-testid="category-inquisition" data-cat="inquisition">🔥 Инквизиция</a>
         </nav>
 
         <!-- ===== ТОВАРЫ ===== -->
@@ -788,8 +777,8 @@
 
         <!-- ===== ПОДВАЛ ===== -->
         <footer class="footer" data-testid="footer">
-            <span data-testid="footer-text">🏰 CITIUS QUAM PESTIS PER EUROPA</span>
-            <small data-testid="footer-small">© ANNO DOMINI MCCCXLVII — MMXXVI · AMAZONIA MEDIEVALIS · OMNIA PECCATA MEMORATA</small>
+            <span data-testid="footer-text">🏰 Доставляем быстрее, чем Чума по Европе</span>
+            <small data-testid="footer-small">© 1347 — 2026 · Amazonia Medievalis · Все грехи записаны</small>
         </footer>
     </div>
 
@@ -799,7 +788,7 @@
         <button class="toast-close" onclick="hideToast()">✕</button>
     </div>
 
-    <!-- ===== МОДАЛКА С ФАКЕЛАМИ ===== -->
+    <!-- ===== МОДАЛКА ФАКЕЛОВ ===== -->
     <div class="modal-overlay" id="torchModal">
         <div class="modal">
             <div class="modal-title">🔥 ВЫБЕРИ СИМВОЛ ОГНЯ 🔥</div>
@@ -809,12 +798,12 @@
         </div>
     </div>
 
-    <!-- ===== МОДАЛКА КОРЗИНЫ (СУНДУК) ===== -->
+    <!-- ===== МОДАЛКА СУНДУКА ===== -->
     <div class="modal-overlay" id="cartModal">
         <div class="modal cart-modal">
             <div class="modal-title">📦 СУНДУК ГРЕШНИКА</div>
             <div class="cart-items" id="cartItems">
-                <div class="cart-empty">☠ КОРЗИНА ПУСТА<br />ДОБАВЬ ТОВАР, ГРЕШНИК!</div>
+                <div class="cart-empty">☠ СУНДУК ПУСТ<br />ДОБАВЬ ТОВАР, ГРЕШНИК!</div>
             </div>
             <div class="cart-total" id="cartTotal">ИТОГО: 0 ₽</div>
             <div class="cart-actions">
@@ -833,19 +822,19 @@
             ru: [
                 { id: 1, emoji: '👕', name: 'Футболка "Я пережил Чуму"', desc: 'Ограниченный тираж 1348 года. Подходит после любого апокалипсиса. 100% лён.',
                     price: 600, oldPrice: null },
-                { id: 2, emoji: '📜', name: 'Свитки для уединения', desc: 'Пока сидишь — читаешь. Мудрые изречения и забавные истории. Два в одном!',
+                { id: 2, emoji: '🧻', name: 'Свитки для уединения', desc: 'Пока сидишь — читаешь. Мудрые изречения и забавные истории. Два в одном!',
                     price: 333, oldPrice: null }
             ],
             en: [
                 { id: 1, emoji: '👕', name: 'T-Shirt "I Survived the Plague"', desc: 'Limited edition from 1348. Fits after any apocalypse. 100% linen.',
                     price: 600, oldPrice: null },
-                { id: 2, emoji: '📜', name: 'Scrolls for Solitude', desc: 'Read while you sit. Wise sayings and funny stories. Two in one!',
+                { id: 2, emoji: '🧻', name: 'Scrolls for Solitude', desc: 'Read while you sit. Wise sayings and funny stories. Two in one!',
                     price: 333, oldPrice: null }
             ],
             la: [
                 { id: 1, emoji: '👕', name: 'TUNICA "PESTEM SUPERVIVI"', desc: 'Editio limitata anni 1348. Aptissima post quemlibet apocalypsin. 100% linum.',
                     price: 600, oldPrice: null },
-                { id: 2, emoji: '📜', name: 'VOLUMINA SOLITUDINI', desc: 'Dum sedes, legis. Sententiae sapientes et fabulae iocosae. Duo in uno!',
+                { id: 2, emoji: '🧻', name: 'VOLUMINA SOLITUDINI', desc: 'Dum sedes, legis. Sententiae sapientes et fabulae iocosae. Duo in uno!',
                     price: 333, oldPrice: null }
             ]
         };
@@ -866,7 +855,7 @@
         ];
 
         // ================================================================
-        //  UI-ТЕКСТЫ (все языки)
+        //  UI-ТЕКСТЫ — ВЕЗДЕ "СУНДУК" вместо "КОРЗИНА"
         // ================================================================
         const UI_TEXTS = {
             ru: {
@@ -876,16 +865,16 @@
                 catClothing: '👕 Одежда',
                 catBooks: '📖 Свитки',
                 catInquisition: '🔥 Инквизиция',
-                addBtn: 'Добавить в корзину',
+                addBtn: 'Добавить в сундук',
                 footerText: '🏰 Доставляем быстрее, чем Чума по Европе',
                 footerSmall: '© 1347 — 2026 · Amazonia Medievalis · Все грехи записаны',
                 toastDefault: '🔥 Добро пожаловать, грешник!',
-                toastAdd: (name) => `🛒 «${name}» добавлен в корзину!`,
-                toastRemove: (name) => `🗑️ «${name}» удалён из корзины!`,
+                toastAdd: (name) => `📦 «${name}» добавлен в сундук!`,
+                toastRemove: (name) => `🗑️ «${name}» удалён из сундука!`,
                 inquisitionAlert: '🔥 Святая инквизиция запросила ваш IP. Продолжить?',
-                cartEmpty: '☠ Корзина пуста. Добавь товар, грешник!',
-                cartItems: (names) => `🛒 В корзине грешника: ${names}`,
-                cartCleared: '☠ Корзина очищена! Все грехи смыты... пока.',
+                cartEmpty: '☠ Сундук пуст. Добавь товар, грешник!',
+                cartItems: (names) => `📦 В сундуке грешника: ${names}`,
+                cartCleared: '☠ Сундук очищен! Все грехи смыты... пока.',
                 searchEmpty: '🔍 Напиши что-нибудь, грешник!',
                 searchFound: (count) => `🔍 Найдено ${count} товаров!`,
                 searchNotFound: '☠ Ничего не найдено. Попробуй "футболка" или "свитки"',
@@ -894,7 +883,7 @@
                 torchClose: '✕ ЗАКРЫТЬ',
                 cartTitle: '📦 СУНДУК ГРЕШНИКА',
                 cartTotal: 'ИТОГО:',
-                cartEmptyText: '☠ КОРЗИНА ПУСТА\nДОБАВЬ ТОВАР, ГРЕШНИК!',
+                cartEmptyText: '☠ СУНДУК ПУСТ\nДОБАВЬ ТОВАР, ГРЕШНИК!',
                 cartClearBtn: '✖ ОЧИСТИТЬ',
                 cartCloseBtn: '✕ ЗАКРЫТЬ',
                 cartItemRemove: '✕',
@@ -906,16 +895,16 @@
                 catClothing: '👕 Clothing',
                 catBooks: '📖 Scrolls',
                 catInquisition: '🔥 Inquisition',
-                addBtn: 'Add to Cart',
+                addBtn: 'Add to Chest',
                 footerText: '🏰 We deliver faster than the Plague across Europe',
                 footerSmall: '© 1347 — 2026 · Amazonia Medievalis · All sins are recorded',
                 toastDefault: '🔥 Welcome, sinner!',
-                toastAdd: (name) => `🛒 «${name}» added to cart!`,
-                toastRemove: (name) => `🗑️ «${name}» removed from cart!`,
+                toastAdd: (name) => `📦 «${name}» added to the chest!`,
+                toastRemove: (name) => `🗑️ «${name}» removed from the chest!`,
                 inquisitionAlert: '🔥 The Holy Inquisition has requested your IP. Continue?',
-                cartEmpty: '☠ The cart is empty. Add an item, sinner!',
-                cartItems: (names) => `🛒 In the sinner\'s cart: ${names}`,
-                cartCleared: '☠ Cart cleared! All sins are washed away... for now.',
+                cartEmpty: '☠ The chest is empty. Add an item, sinner!',
+                cartItems: (names) => `📦 In the sinner\'s chest: ${names}`,
+                cartCleared: '☠ Chest cleared! All sins are washed away... for now.',
                 searchEmpty: '🔍 Write something, sinner!',
                 searchFound: (count) => `🔍 Found ${count} items!`,
                 searchNotFound: '☠ Nothing found. Try "shirt" or "scrolls"',
@@ -924,7 +913,7 @@
                 torchClose: '✕ CLOSE',
                 cartTitle: '📦 SINNER\'S CHEST',
                 cartTotal: 'TOTAL:',
-                cartEmptyText: '☠ CART IS EMPTY\nADD AN ITEM, SINNER!',
+                cartEmptyText: '☠ CHEST IS EMPTY\nADD AN ITEM, SINNER!',
                 cartClearBtn: '✖ CLEAR',
                 cartCloseBtn: '✕ CLOSE',
                 cartItemRemove: '✕',
@@ -936,16 +925,16 @@
                 catClothing: '👕 VESTIS',
                 catBooks: '📖 CODICES',
                 catInquisition: '🔥 INQUISITIO',
-                addBtn: 'AD CARRUM',
+                addBtn: 'AD ARCAM',
                 footerText: '🏰 CITIUS QUAM PESTIS PER EUROPA',
                 footerSmall: '© ANNO DOMINI MCCCXLVII — MMXXVI · AMAZONIA MEDIEVALIS · OMNIA PECCATA MEMORATA',
                 toastDefault: '🔥 SALVE, PECCATOR!',
-                toastAdd: (name) => `🛒 «${name}» AD CARRUM ADDITUM!`,
-                toastRemove: (name) => `🗑️ «${name}» DE CARRO REMOTUM!`,
+                toastAdd: (name) => `📦 «${name}» AD ARCAM ADDITUM!`,
+                toastRemove: (name) => `🗑️ «${name}» DE ARCA REMOTUM!`,
                 inquisitionAlert: '🔥 INQUISITIO SANCTA IP TUUM PETIVIT. PERGERE?',
-                cartEmpty: '☠ CARRUS VACUUS EST. ADDE MERCEM, PECCATOR!',
-                cartItems: (names) => `🛒 IN CARRO PECCATORIS: ${names}`,
-                cartCleared: '☠ CARRUS PURGATUS! OMNIA PECCATA ABLUTA... PRO NUNC.',
+                cartEmpty: '☠ ARCA VACUA EST. ADDE MERCEM, PECCATOR!',
+                cartItems: (names) => `📦 IN ARCA PECCATORIS: ${names}`,
+                cartCleared: '☠ ARCA PURGATA! OMNIA PECCATA ABLUTA... PRO NUNC.',
                 searchEmpty: '🔍 ALIQUID SCRIBE, PECCATOR!',
                 searchFound: (count) => `🔍 ${count} MERCES INVENTAE!`,
                 searchNotFound: '☠ NIHIL INVENTUM. TENTA "TUNICA" VEL "VOLUMINA"',
@@ -954,7 +943,7 @@
                 torchClose: '✕ CLAUDE',
                 cartTitle: '📦 ARCA PECCATORIS',
                 cartTotal: 'SUMMA:',
-                cartEmptyText: '☠ CARRUS VACUUS EST\nADDE MERCEM, PECCATOR!',
+                cartEmptyText: '☠ ARCA VACUA EST\nADDE MERCEM, PECCATOR!',
                 cartClearBtn: '✖ PURGARE',
                 cartCloseBtn: '✕ CLAUDE',
                 cartItemRemove: '✕',
@@ -1009,40 +998,45 @@
                 card.className = 'product-card';
                 card.setAttribute('data-testid', `product-${p.id}`);
                 card.innerHTML = `
-                            <div class="product-emoji" data-testid="product-emoji-${p.id}">${p.emoji}</div>
-                            <div class="product-name" data-testid="product-name-${p.id}">${p.name}</div>
-                            <div class="product-desc" data-testid="product-desc-${p.id}">${p.desc}</div>
-                            <div class="product-price" data-testid="product-price-${p.id}">
-                                ${priceStr} ${symbol}
-                                ${p.oldPrice ? `<small>${Math.round(p.oldPrice * rate)} ${symbol}</small>` : ''}
-                            </div>
-                            <button class="add-btn" data-testid="add-btn-${p.id}" onclick="addToCart(${p.id})">
-                                ${UI_TEXTS[lang].addBtn}
-                            </button>
-                        `;
+                    <div class="product-emoji" data-testid="product-emoji-${p.id}">${p.emoji}</div>
+                    <div class="product-name" data-testid="product-name-${p.id}">${p.name}</div>
+                    <div class="product-desc" data-testid="product-desc-${p.id}">${p.desc}</div>
+                    <div class="product-price" data-testid="product-price-${p.id}">
+                        ${priceStr} ${symbol}
+                        ${p.oldPrice ? `<small>${Math.round(p.oldPrice * rate)} ${symbol}</small>` : ''}
+                    </div>
+                    <button class="add-btn" data-testid="add-btn-${p.id}" onclick="addToCart(${p.id})">
+                        ${UI_TEXTS[lang].addBtn}
+                    </button>
+                `;
                 productContainer.appendChild(card);
             });
         }
 
         function updateUITexts(lang) {
             const t = UI_TEXTS[lang] || UI_TEXTS.ru;
-            document.querySelector('[data-testid="search-input"]').placeholder = t.searchPlaceholder;
-            document.querySelector('[data-testid="search-btn"]').innerHTML = t.searchBtn;
 
-            const cats = document.querySelectorAll('[data-testid^="cat-"]');
-            if (cats.length >= 4) {
-                cats[0].textContent = t.catAll;
-                cats[1].textContent = t.catClothing;
-                cats[2].textContent = t.catBooks;
-                cats[3].textContent = t.catInquisition;
-            }
+            const searchInput = document.querySelector('[data-testid="search-input"]');
+            const searchBtn = document.querySelector('[data-testid="search-btn"]');
+            if (searchInput) searchInput.placeholder = t.searchPlaceholder;
+            if (searchBtn) searchBtn.innerHTML = t.searchBtn;
 
-            document.querySelector('[data-testid="footer-text"]').textContent = t.footerText;
-            document.querySelector('[data-testid="footer-small"]').textContent = t.footerSmall;
+            document.querySelectorAll('[data-cat]').forEach(el => {
+                const cat = el.getAttribute('data-cat');
+                if (cat === 'all') el.textContent = t.catAll;
+                else if (cat === 'clothing') el.textContent = t.catClothing;
+                else if (cat === 'books') el.textContent = t.catBooks;
+                else if (cat === 'inquisition') el.textContent = t.catInquisition;
+            });
+
+            const footerText = document.querySelector('[data-testid="footer-text"]');
+            const footerSmall = document.querySelector('[data-testid="footer-small"]');
+            if (footerText) footerText.textContent = t.footerText;
+            if (footerSmall) footerSmall.textContent = t.footerSmall;
         }
 
         // ================================================================
-        //  КОРЗИНА
+        //  СУНДУК (вместо корзины)
         // ================================================================
 
         function addToCart(productId) {
@@ -1066,9 +1060,10 @@
         function clearCart() {
             const t = UI_TEXTS[currentLang];
             if (cart.length === 0) return;
-            if (confirm('☠ ' + (currentLang === 'ru' ? 'Очистить корзину, грешник?' :
-                    currentLang === 'en' ? 'Clear the cart, sinner?' :
-                    'Purgare carrum, peccator?'))) {
+            const msg = currentLang === 'ru' ? 'Очистить сундук, грешник?' :
+                currentLang === 'en' ? 'Clear the chest, sinner?' :
+                'Purgare arcam, peccator?';
+            if (confirm('☠ ' + msg)) {
                 cart = [];
                 updateCartBadge();
                 showToast(t.cartCleared);
@@ -1077,11 +1072,12 @@
         }
 
         function updateCartBadge() {
-            document.querySelector('[data-testid="cart-count"]').textContent = cart.length;
+            const countEl = document.querySelector('[data-testid="cart-count"]');
+            if (countEl) countEl.textContent = cart.length;
         }
 
         // ================================================================
-        //  МОДАЛКА КОРЗИНЫ (СУНДУК)
+        //  МОДАЛКА СУНДУКА
         // ================================================================
 
         function openCartModal() {
@@ -1116,13 +1112,13 @@
                 const priceStr = price % 1 === 0 ? price : price.toFixed(2);
                 total += price;
                 html += `
-                            <div class="cart-item">
-                                <span class="item-emoji">${item.emoji}</span>
-                                <span class="item-name">${item.name}</span>
-                                <span class="item-price">${priceStr} ${symbol}</span>
-                                <button class="item-remove" onclick="removeFromCart(${index})">${t.cartItemRemove}</button>
-                            </div>
-                        `;
+                    <div class="cart-item">
+                        <span class="item-emoji">${item.emoji}</span>
+                        <span class="item-name">${item.name}</span>
+                        <span class="item-price">${priceStr} ${symbol}</span>
+                        <button class="item-remove" onclick="removeFromCart(${index})">${t.cartItemRemove}</button>
+                    </div>
+                `;
             });
 
             const totalStr = total % 1 === 0 ? total : total.toFixed(2);
@@ -1132,10 +1128,18 @@
 
         function updateCartModalTexts(lang) {
             const t = UI_TEXTS[lang] || UI_TEXTS.ru;
-            document.querySelector('#cartModal .modal-title').textContent = t.cartTitle;
-            document.querySelector('#cartModal .clear-btn').textContent = t.cartClearBtn;
+            const title = document.querySelector('#cartModal .modal-title');
+            const clearBtn = document.querySelector('#cartModal .clear-btn');
             const closeBtns = document.querySelectorAll('#cartModal .modal-close-btn');
-            closeBtns.forEach(btn => btn.textContent = t.cartCloseBtn);
+
+            if (title) title.textContent = t.cartTitle;
+            if (clearBtn) clearBtn.textContent = t.cartClearBtn;
+            closeBtns.forEach(btn => {
+                if (btn.textContent.includes('ЗАКРЫТЬ') || btn.textContent.includes('CLOSE') || btn.textContent.includes(
+                        'CLAUDE')) {
+                    btn.textContent = t.cartCloseBtn;
+                }
+            });
             renderCartModal();
         }
 
@@ -1152,9 +1156,9 @@
                 const div = document.createElement('div');
                 div.className = 'modal-item' + (item.emoji === currentTorch ? ' selected' : '');
                 div.innerHTML = `
-                            <span class="emoji">${item.emoji}</span>
-                            <span class="label">${item.label}</span>
-                        `;
+                    <span class="emoji">${item.emoji}</span>
+                    <span class="label">${item.label}</span>
+                `;
                 div.addEventListener('click', () => selectTorch(item.emoji));
                 grid.appendChild(div);
             });
@@ -1181,16 +1185,21 @@
                 }
             }
 
-            showToast(`🔥 ${emoji} ${currentLang === 'ru' ? 'выбран как твой факел!' :
+            const msg = currentLang === 'ru' ? 'выбран как твой факел!' :
                 currentLang === 'en' ? 'chosen as your torch!' :
-                'electus est ut fax tua!'}`);
+                'electus est ut fax tua!';
+            showToast(`🔥 ${emoji} ${msg}`);
         }
 
         function updateTorchModalTexts(lang) {
             const t = UI_TEXTS[lang] || UI_TEXTS.ru;
-            document.querySelector('#torchModal .modal-title').textContent = t.torchModalTitle;
-            document.querySelector('#torchModal .hint').textContent = t.torchHint;
-            document.querySelector('#torchModal .modal-close-btn').textContent = t.torchClose;
+            const title = document.querySelector('#torchModal .modal-title');
+            const hint = document.querySelector('#torchModal .hint');
+            const closeBtn = document.querySelector('#torchModal .modal-close-btn');
+
+            if (title) title.textContent = t.torchModalTitle;
+            if (hint) hint.textContent = t.torchHint;
+            if (closeBtn) closeBtn.textContent = t.torchClose;
         }
 
         // ================================================================
@@ -1199,7 +1208,8 @@
 
         function showToast(message) {
             const toast = document.getElementById('toast');
-            document.getElementById('toastMessage').textContent = message;
+            const msgEl = document.getElementById('toastMessage');
+            if (msgEl) msgEl.textContent = message;
             toast.classList.add('show');
             clearTimeout(toastTimer);
             toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
@@ -1215,13 +1225,9 @@
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
 
-            // Клик по факелу открывает модалку
             document.getElementById('torchContainer').addEventListener('click', openTorchModal);
-
-            // Клик по корзине открывает сундук
             document.getElementById('cartBadge').addEventListener('click', openCartModal);
 
-            // Закрытие модалок по клику на оверлей
             document.querySelectorAll('.modal-overlay').forEach(el => {
                 el.addEventListener('click', function(e) {
                     if (e.target === this) {
@@ -1231,18 +1237,16 @@
                 });
             });
 
-            // Инквизиция
             document.querySelector('[data-testid="category-inquisition"]').addEventListener('click', function(e) {
                 e.preventDefault();
                 const t = UI_TEXTS[currentLang];
                 if (confirm(t.inquisitionAlert)) {
-                    showToast('🔥 INQUISITOR APPROBAT! / Инквизитор одобряет!');
+                    showToast('🔥 INQUISITOR APPROBAT!');
                 } else {
-                    showToast('🙏 SALVATUS ES... ADHUC. / Вы спасены... пока.');
+                    showToast('🙏 SALVATUS ES... ADHUC.');
                 }
             });
 
-            // Поиск
             const searchBtn = document.getElementById('searchBtn');
             const searchInput = document.getElementById('searchInput');
             searchBtn.addEventListener('click', function(e) {
@@ -1259,11 +1263,8 @@
                 showToast(found.length > 0 ? t.searchFound(found.length) : t.searchNotFound);
             });
 
-            // Enter в поиске
             searchInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    searchBtn.click();
-                }
+                if (e.key === 'Enter') searchBtn.click();
             });
 
             renderProducts('ru');
@@ -1272,7 +1273,6 @@
             setTimeout(() => showToast('🔥 SALVE, PECCATOR! / Добро пожаловать, грешник!'), 600);
         });
 
-        // Глобальные функции для onclick
         window.switchLang = switchLang;
         window.switchCurrency = switchCurrency;
         window.addToCart = addToCart;
@@ -1284,6 +1284,7 @@
         window.openCartModal = openCartModal;
         window.closeCartModal = closeCartModal;
         window.selectTorch = selectTorch;
+        window.renderCartModal = renderCartModal;
     </script>
 
 </body>
