@@ -1,0 +1,26 @@
+{
+  "name": "amazonia_medievalis",
+  "version": "1.0.0",
+  "description": "SPA for test purposes and fun!",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorslepko/amazonia_medievalis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/igorslepko/amazonia_medievalis/issues"
+  },
+  "homepage": "https://github.com/igorslepko/amazonia_medievalis#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.4.1"
+  }
+}
