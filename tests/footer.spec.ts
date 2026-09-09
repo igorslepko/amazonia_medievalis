@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/init.html');
 });
 
-test('Проверка текста футера на всех языках', async ({ page }) => {
+test('Footer text check - all 3 languages (ru, en, la)', async ({ page }) => {
   const allFooterTexts = [
     {
       lang: 'ru',
