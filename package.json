@@ -6,7 +6,10 @@
   "directories": {
     "test": "tests"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "serve . -p 5500",
+    "test": "playwright test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/igorslepko/amazonia_medievalis.git"
@@ -21,6 +24,7 @@
   "homepage": "https://github.com/igorslepko/amazonia_medievalis#readme",
   "devDependencies": {
     "@playwright/test": "^1.63.0",
-    "@types/node": "^26.5.1"
+    "@types/node": "^26.5.1",
+    "serve": "^14.2.6"
   }
 }
