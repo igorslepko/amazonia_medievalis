@@ -666,10 +666,6 @@
 
     <div class="container">
 
-        <!-- ================================================================
-        БЕГУЩАЯ СТРОКА (ТЕПЕРЬ ЧЕРЕЗ JS)
-        ================================================================ -->
-
         <div class="marquee-wrap">
             <div class="marquee" id="marqueeText">
                 ⚜️ КУПИ 3 ИНДУЛЬГЕНЦИИ — ПОЛУЧИ 10% СКИДКИ НА ВЕСЬ ЗАКАЗ! ⚜️
@@ -677,10 +673,6 @@
                 🕯️ ПРЕДЛОЖЕНИЕ ДЕЙСТВУЕТ ДО КОНЦА НЕДЕЛИ. ИНКВИЗИЦИЯ СЛЕДИТ ЗА ВАМИ.
             </div>
         </div>
-
-        <!-- ================================================================
-        ШАПКА
-        ================================================================ -->
 
         <header class="header">
             <div class="logo-area">
@@ -712,18 +704,10 @@
             </div>
         </header>
 
-        <!-- ================================================================
-        ПОИСК
-        ================================================================ -->
-
         <div class="search-bar" data-testid="search-bar">
             <input type="text" placeholder="🔍 Поиск товара..." data-testid="search-input" id="searchInput" />
             <button data-testid="search-btn" id="searchBtn">⚔️ Искать</button>
         </div>
-
-        <!-- ================================================================
-        КАТЕГОРИИ
-        ================================================================ -->
 
         <nav class="categories" data-testid="categories" id="categoriesNav">
             <a data-testid="cat-all" data-cat="all">📜 Все товары</a>
@@ -732,15 +716,7 @@
             <a data-testid="category-inquisition" data-cat="inquisition">🔥 Инквизиция</a>
         </nav>
 
-        <!-- ================================================================
-        ТОВАРЫ (ТОЛЬКО 5)
-        ================================================================ -->
-
         <div class="products" data-testid="products-grid" id="productGrid"></div>
-
-        <!-- ================================================================
-        ПОДВАЛ
-        ================================================================ -->
 
         <footer class="footer" data-testid="footer">
             <span data-testid="footer-text">🏰 Доставляем быстрее, чем Чума по Европе</span>
@@ -748,18 +724,10 @@
         </footer>
     </div>
 
-    <!-- ================================================================
-    ТОСТ
-    ================================================================ -->
-
     <div class="toast" data-testid="toast" id="toast">
         <span data-testid="toast-message" id="toastMessage">🔥 SALVE, PECCATOR!</span>
         <button class="toast-close" onclick="hideToast()">✕</button>
     </div>
-
-    <!-- ================================================================
-    МОДАЛКА СУНДУКА
-    ================================================================ -->
 
     <div class="modal-overlay" id="cartModal">
         <div class="modal cart-modal">
@@ -777,44 +745,44 @@
 
     <script>
         // ================================================================
-        //  ДАННЫЕ — ТОЛЬКО 5 ТОВАРОВ
+        //  ДАННЫЕ — 5 ТОВАРОВ С КАТЕГОРИЯМИ
         // ================================================================
 
         const PRODUCTS = {
             ru: [
-                { id: 1, emoji: '🧻', name: 'Свитки для уединения', desc: 'Пока сидишь — читаешь. Мудрые изречения и забавные истории. Два в одном!',
+                { id: 1, emoji: '🧻', category: 'books', name: 'Свитки для уединения', desc: 'Пока сидишь — читаешь. Мудрые изречения и забавные истории. Два в одном!',
                     price: 333, oldPrice: null },
-                { id: 2, emoji: '🧥', name: 'Мантия "Переживший Чуму"', desc: 'Ограниченный тираж 1348 года. Согреет после любого апокалипсиса. 100% шерсть.',
+                { id: 2, emoji: '🧥', category: 'clothing', name: 'Мантия "Переживший Чуму"', desc: 'Ограниченный тираж 1348 года. Согреет после любого апокалипсиса. 100% шерсть.',
                     price: 600, oldPrice: null },
-                { id: 3, emoji: '🔒', name: 'Пояс верности', desc: 'Первое в мире средство контрацепции. Надёжно, как каменная стена.',
+                { id: 3, emoji: '🔒', category: 'clothing', name: 'Пояс верности', desc: 'Первое в мире средство контрацепции. Надёжно, как каменная стена.',
                     price: 1500, oldPrice: null },
-                { id: 4, emoji: '📜', name: 'Индульгенция на неделю', desc: 'Все грехи прощены до следующего вторника. Действует только на этой неделе.',
+                { id: 4, emoji: '📜', category: 'books', name: 'Индульгенция на неделю', desc: 'Все грехи прощены до следующего вторника. Действует только на этой неделе.',
                     price: 500, oldPrice: null },
-                { id: 5, emoji: '🐴', name: 'Запасная лошадь', desc: 'Никогда не знаешь, когда понадобится.',
+                { id: 5, emoji: '🐴', category: null, name: 'Запасная лошадь', desc: 'Никогда не знаешь, когда понадобится.',
                     price: 1800, oldPrice: 2500 }
             ],
             en: [
-                { id: 1, emoji: '🧻', name: 'Scrolls for Solitude', desc: 'Read while you sit. Wise sayings and funny stories. Two in one!',
+                { id: 1, emoji: '🧻', category: 'books', name: 'Scrolls for Solitude', desc: 'Read while you sit. Wise sayings and funny stories. Two in one!',
                     price: 333, oldPrice: null },
-                { id: 2, emoji: '🧥', name: 'Cloak "Plague Survivor"', desc: 'Limited edition from 1348. Warms after any apocalypse. 100% wool.',
+                { id: 2, emoji: '🧥', category: 'clothing', name: 'Cloak "Plague Survivor"', desc: 'Limited edition from 1348. Warms after any apocalypse. 100% wool.',
                     price: 600, oldPrice: null },
-                { id: 3, emoji: '🔒', name: 'Chastity Belt', desc: 'The world\'s first contraceptive. As reliable as a stone wall.',
+                { id: 3, emoji: '🔒', category: 'clothing', name: 'Chastity Belt', desc: 'The world\'s first contraceptive. As reliable as a stone wall.',
                     price: 1500, oldPrice: null },
-                { id: 4, emoji: '📜', name: 'Indulgence for a Week', desc: 'All sins forgiven until next Tuesday. Valid only this week.',
+                { id: 4, emoji: '📜', category: 'books', name: 'Indulgence for a Week', desc: 'All sins forgiven until next Tuesday. Valid only this week.',
                     price: 500, oldPrice: null },
-                { id: 5, emoji: '🐴', name: 'Spare Horse', desc: 'You never know when you\'ll need it.',
+                { id: 5, emoji: '🐴', category: null, name: 'Spare Horse', desc: 'You never know when you\'ll need it.',
                     price: 1800, oldPrice: 2500 }
             ],
             la: [
-                { id: 1, emoji: '🧻', name: 'VOLUMINA SOLITUDINI', desc: 'Dum sedes, legis. Sententiae sapientes et fabulae iocosae. Duo in uno!',
+                { id: 1, emoji: '🧻', category: 'books', name: 'VOLUMINA SOLITUDINI', desc: 'Dum sedes, legis. Sententiae sapientes et fabulae iocosae. Duo in uno!',
                     price: 333, oldPrice: null },
-                { id: 2, emoji: '🧥', name: 'PALLIUM "PESTEM SUPERVIVI"', desc: 'Editio limitata anni 1348. Post quemlibet apocalypsin calefacit. 100% lana.',
+                { id: 2, emoji: '🧥', category: 'clothing', name: 'PALLIUM "PESTEM SUPERVIVI"', desc: 'Editio limitata anni 1348. Post quemlibet apocalypsin calefacit. 100% lana.',
                     price: 600, oldPrice: null },
-                { id: 3, emoji: '🔒', name: 'CINGULUM CASTITATIS', desc: 'Primum in mundo contraceptivum. Firmum ut murus lapideus.',
+                { id: 3, emoji: '🔒', category: 'clothing', name: 'CINGULUM CASTITATIS', desc: 'Primum in mundo contraceptivum. Firmum ut murus lapideus.',
                     price: 1500, oldPrice: null },
-                { id: 4, emoji: '📜', name: 'INDULGENTIA HEBDOMADALIS', desc: 'Omnia peccata dimissa usque ad proximam diem Martis. Valet tantum hac hebdomade.',
+                { id: 4, emoji: '📜', category: 'books', name: 'INDULGENTIA HEBDOMADALIS', desc: 'Omnia peccata dimissa usque ad proximam diem Martis. Valet tantum hac hebdomade.',
                     price: 500, oldPrice: null },
-                { id: 5, emoji: '🐴', name: 'EQUUS SUBSIDIARIUS', desc: 'Numquam scis quando opus erit.',
+                { id: 5, emoji: '🐴', category: null, name: 'EQUUS SUBSIDIARIUS', desc: 'Numquam scis quando opus erit.',
                     price: 1800, oldPrice: 2500 }
             ]
         };
@@ -823,7 +791,7 @@
         const CURRENCY_SYMBOLS = { rub: '₽', usd: '$', ducat: '⛃' };
 
         // ================================================================
-        //  UI-ТЕКСТЫ — ДОБАВЛЕН marquee
+        //  UI-ТЕКСТЫ
         // ================================================================
         const UI_TEXTS = {
             ru: {
@@ -853,6 +821,7 @@
                 cartItemRemove: '✕',
                 discountToast: '🔥 ТЫ ПОЛУЧИЛ СКИДКУ 10%! Инквизиция гордится тобой!',
                 marquee: '⚜️ КУПИ 3 ИНДУЛЬГЕНЦИИ — ПОЛУЧИ 10% СКИДКИ НА ВЕСЬ ЗАКАЗ! ⚜️ • 🕯️ ПРЕДЛОЖЕНИЕ ДЕЙСТВУЕТ ДО КОНЦА НЕДЕЛИ. ИНКВИЗИЦИЯ СЛЕДИТ ЗА ВАМИ.',
+                emptyCategory: '☠ В этой категории пусто...',
             },
             en: {
                 searchPlaceholder: '🔍 Search for items...',
@@ -881,6 +850,7 @@
                 cartItemRemove: '✕',
                 discountToast: '🔥 YOU GOT 10% DISCOUNT! The Inquisition is proud of you!',
                 marquee: '⚜️ BUY 3 INDULGENCES — GET 10% OFF YOUR ENTIRE ORDER! ⚜️ • 🕯️ OFFER VALID UNTIL THE END OF THE WEEK. THE INQUISITION IS WATCHING YOU.',
+                emptyCategory: '☠ Nothing in this category...',
             },
             la: {
                 searchPlaceholder: '🔍 QUAERE MERCEM...',
@@ -909,6 +879,7 @@
                 cartItemRemove: '✕',
                 discountToast: '🔥 10% REMISSIONEM ACCEPISTI! Inquisitio de te superba est!',
                 marquee: '⚜️ EMITTE 3 INDULGENTIAS — ACCIPE 10% REMISSIONEM IN TOTO ORDINE! ⚜️ • 🕯️ OFFERTUM VALET USQUE AD FINEM HEBDOMADAE. INQUISITIO TE OBSERVAT.',
+                emptyCategory: '☠ IN HAC CATEGORIA NIHIL EST...',
             }
         };
 
@@ -917,6 +888,7 @@
         // ================================================================
         let currentLang = 'ru';
         let currentCurrency = 'rub';
+        let currentCategory = 'all';
         let cart = [];
         let toastTimer = null;
         let productContainer = document.getElementById('productGrid');
@@ -933,7 +905,7 @@
             document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
             renderProducts(currentLang);
             updateUITexts(currentLang);
-            updateMarquee(); // <-- обновляем бегущую строку
+            updateMarquee();
             updateCartBadge();
             updateCartModalTexts(lang);
         }
@@ -946,12 +918,41 @@
             renderProducts(currentLang);
         }
 
+        function filterByCategory(category) {
+            currentCategory = category;
+
+            // Подсветка активной категории
+            document.querySelectorAll('[data-cat]').forEach(el => {
+                el.style.background = '';
+                el.style.borderColor = '';
+            });
+            const activeEl = document.querySelector(`[data-cat="${category}"]`);
+            if (activeEl) {
+                activeEl.style.background = '#1a0e0a';
+                activeEl.style.borderColor = '#4a2a1a';
+            }
+
+            renderProducts(currentLang);
+        }
+
         function renderProducts(lang) {
-            const products = PRODUCTS[lang] || PRODUCTS.ru;
+            const allProducts = PRODUCTS[lang] || PRODUCTS.ru;
             const rate = EXCHANGE_RATES[currentCurrency] || 1;
             const symbol = CURRENCY_SYMBOLS[currentCurrency] || '₽';
+            const t = UI_TEXTS[lang] || UI_TEXTS.ru;
+
+            // Фильтрация по текущей категории
+            const products = currentCategory === 'all'
+                ? allProducts
+                : allProducts.filter(p => p.category === currentCategory);
 
             productContainer.innerHTML = '';
+
+            if (products.length === 0) {
+                productContainer.innerHTML = `<div class="cart-empty">${t.emptyCategory}</div>`;
+                return;
+            }
+
             products.forEach(p => {
                 const convertedPrice = Math.round(p.price * rate * 100) / 100;
                 const priceStr = convertedPrice % 1 === 0 ? convertedPrice : convertedPrice.toFixed(2);
@@ -997,10 +998,6 @@
             if (footerText) footerText.textContent = t.footerText;
             if (footerSmall) footerSmall.textContent = t.footerSmall;
         }
-
-        // ================================================================
-        //  ОБНОВЛЕНИЕ БЕГУЩЕЙ СТРОКИ
-        // ================================================================
 
         function updateMarquee() {
             const t = UI_TEXTS[currentLang] || UI_TEXTS.ru;
@@ -1198,14 +1195,24 @@
                 });
             });
 
-            document.querySelector('[data-testid="category-inquisition"]').addEventListener('click', function(e) {
-                e.preventDefault();
-                const t = UI_TEXTS[currentLang];
-                if (confirm(t.inquisitionAlert)) {
-                    showToast('🔥 INQUISITOR APPROBAT!');
-                } else {
-                    showToast('🙏 SALVATUS ES... ADHUC.');
-                }
+            // Обработчики для всех категорий
+            document.querySelectorAll('[data-cat]').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const cat = this.getAttribute('data-cat');
+
+                    if (cat === 'inquisition') {
+                        const t = UI_TEXTS[currentLang];
+                        if (confirm(t.inquisitionAlert)) {
+                            showToast('🔥 INQUISITOR APPROBAT!');
+                        } else {
+                            showToast('🙏 SALVATUS ES... ADHUC.');
+                        }
+                        return;
+                    }
+
+                    filterByCategory(cat);
+                });
             });
 
             const searchBtn = document.getElementById('searchBtn');
@@ -1232,11 +1239,13 @@
             updateUITexts('ru');
             updateMarquee();
             updateCartBadge();
+            filterByCategory('all'); // подсветить активную категорию при загрузке
             setTimeout(() => showToast('🔥 SALVE, PECCATOR! / Добро пожаловать, грешник!'), 600);
         });
 
         window.switchLang = switchLang;
         window.switchCurrency = switchCurrency;
+        window.filterByCategory = filterByCategory;
         window.addToCart = addToCart;
         window.removeFromCart = removeFromCart;
         window.clearCart = clearCart;

@@ -29,3 +29,14 @@ test('Empty search toast check - all languages (ru, en, la)', async ({ mainPage 
     console.log(actualToastText);
   });
 });
+
+[
+  { category: 'all', numberOfGoods: 5 },
+  { category: 'books', numberOfGoods: 2 },
+  { category: 'clothing', numberOfGoods: 2 },
+].forEach(({ category, numberOfGoods }) => {
+  test(`Check ${category} navigation button`, async ({ mainPage }) => {
+    await mainPage.filterBy(category as 'all' | 'books' | 'clothing');
+    await expect(mainPage.productGrid.locator('.product-card')).toHaveCount(numberOfGoods);
+  });
+});
