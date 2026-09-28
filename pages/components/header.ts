@@ -42,4 +42,8 @@ export class HeaderComponent {
     const activeCurrencyBtn = this.currencySelector.locator('.currency-btn.active');
     return (await this.page.locator('.currency-btn.active').getAttribute('data-currency')) || '';
   }
+  async getCartItemCounter(): Promise<number> {
+    const countText = await this.cartIcon.locator('.cart-count').innerText();
+    return parseInt(countText) || 0;
+  }
 }
