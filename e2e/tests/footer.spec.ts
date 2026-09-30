@@ -3,7 +3,7 @@ import { FooterComponent } from '../pages/components/footer';
 import { HeaderComponent } from '../pages/components/header';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/init.html');
+  await page.goto('/index.html');
 });
 
 test('Footer text check - all 3 languages (ru, en, la)', async ({ page }) => {

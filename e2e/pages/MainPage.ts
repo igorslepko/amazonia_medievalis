@@ -29,7 +29,7 @@ export class MainPage {
   }
 
   async goto() {
-    await this.page.goto('/init.html');
+    await this.page.goto('/index.html');
   }
   // собираем локатор по названию категории
   categotyButton(category: 'all' | 'clothing' | 'books' | 'inquisition'): Locator {
