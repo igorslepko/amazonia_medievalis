@@ -2,7 +2,7 @@ import { Locator, Page } from '@playwright/test';
 import { HeaderComponent } from './components/header';
 import { FooterComponent } from './components/footer';
 import { ToastComponent } from './components/toast';
-import { CartPage } from './myCartPage';
+import { CartPage } from './CartPage';
 
 export class MainPage {
   readonly page: Page;

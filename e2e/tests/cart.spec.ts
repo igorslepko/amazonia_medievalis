@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from './fixtures';
-import { CartPage } from '../pages/myCartPage';
+import { CartPage } from '../pages/CartPage';
 
 test('Cart items counter on main page header shows correct values (default  = 2 as per fixture)', async ({
   mainPageWithCart,
