@@ -1,4 +1,4 @@
-venv/
+**venv/
 torch.py
 
 # Playwright
@@ -11,3 +11,7 @@ torch.py
 
 # Extra
 *.png
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
