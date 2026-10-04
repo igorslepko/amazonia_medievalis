@@ -3,6 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.routers import products
 from app.schemas import HealthResponse
+from app.routers import products, cart
+
+
 
 app = FastAPI(
     title="Amazonia Medievalis API",
@@ -30,3 +33,5 @@ app.include_router(products.router)
 def health() -> dict:
     """Healthcheck для мониторинга."""
     return {"status": "ok"}
+
+app.include_router(cart.router)

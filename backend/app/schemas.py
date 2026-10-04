@@ -13,3 +13,14 @@ class Product(BaseModel):
 
 class HealthResponse(BaseModel):
     status: str
+
+
+class CartAddRequest(BaseModel):
+    product_id: int
+
+
+class CartResponse(BaseModel):
+    items: list[Product]
+    subtotal: float
+    discount: float
+    total: float
