@@ -1,15 +1,32 @@
 import pytest
 from app.core.discount import calculate_totals, calculate_discount
+'''
 
+FakeCartItem — имитация CartItem:
 
+Конструктор принимает product_id: int и price: int
+
+Сохраняет product_id в self.product_id
+
+Создаёт FakeProduct(price) и сохраняет в self.product
+'''
+
+class FakeProduct:
+    def __init__(self, price: int):
+        self.price = price
+class FakeCartItem:
+    def __init__(self,product_id:int, price:int):
+        self.product_id = product_id
+        self.product = FakeProduct(price)
+        
 @pytest.mark.parametrize(
         "items, expected_discount",
         [
             ([], 0.0),
-            ([{"id": 4, "price": 100.0}], 0.0),
-            ([{"id": 4, "price": 100.0}] * 2, 0.0),
-            ([{"id": 4, "price": 100.0}] * 3, 0.1),
-            ([{"id": 4, "price": 100.0}] * 4, 0.1),
+            ([FakeCartItem(4,100)], 0.0),
+            ([FakeCartItem(4,100)]*2, 0.0),
+            ([FakeCartItem(4,100)]*3, 0.1),
+            ([FakeCartItem(4,100)]*4, 0.1),
         ]
 )
 def test_calculate_discount(items, expected_discount):
@@ -27,8 +44,8 @@ def test_calculate_empty_cart_returns_zero():
 
 def test_calculate_totals_no_discount_items_returns_no_discount():
     items = [
-        {"id":1, "name":"Product with no discount", "price":100.0},
-        {"id":2, "name":"Product 2 with no discount", "price":200.0}
+        FakeCartItem(1,100),
+        FakeCartItem(2,200)
     ]
     total = calculate_totals(items)
     assert total == {
@@ -39,10 +56,10 @@ def test_calculate_totals_no_discount_items_returns_no_discount():
 
 def test_calculate_totals_with_discount_adding_3_products_with_id_4_to_any_other_product_to_cart_returns_10_percent_discount():
     items = [
-        {"id":4, "name":"Product with Discount", "price":100.0},
-        {"id":4, "name":"Product with Discount", "price":100.0},
-        {"id":4, "name":"Product with Discount", "price":100.0},
-        {"id":1, "name":"Product with no discount", "price":100.0},
+        FakeCartItem(4,100),
+        FakeCartItem(4,100),
+        FakeCartItem(4,100),
+        FakeCartItem(1,100),
     ]
     total = calculate_totals(items)
     assert total == {
@@ -53,8 +70,8 @@ def test_calculate_totals_with_discount_adding_3_products_with_id_4_to_any_other
 
 def test_calculate_totals_for_2_special_items_returns_no_discount():
     items = [
-        {"id":4, "name":"Product with Discount", "price":100.0},
-        {"id":4, "name":"Product with Discount", "price":100.0}
+        FakeCartItem(4,100),
+        FakeCartItem(4,100),
     ]
     total = calculate_totals(items)
     assert total == {

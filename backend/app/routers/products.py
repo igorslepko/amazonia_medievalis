@@ -1,6 +1,8 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Depends, Query
+from sqlalchemy.orm import Session
 
-from app.data import PRODUCTS
+from app.core.database import get_db
+from app.models import Product as ProductModel, ProductTranslation
 from app.schemas import Product
 
 router = APIRouter(prefix="/api/products", tags=["products"])
@@ -8,27 +10,39 @@ router = APIRouter(prefix="/api/products", tags=["products"])
 
 @router.get("", response_model=list[Product])
 def get_products(
-    lang: str = Query("ru", pattern="^(ru|en|la)$", description="Language: ru, en, la"),
-    category: str | None = Query(None, description="Filter by category"),
-    search: str | None = Query(None, min_length=1, description="Search in name and description"),
+    lang: str = Query("ru", pattern="^(ru|en|la)$"),
+    category: str | None = Query(None),
+    search: str | None = Query(None, min_length=1),
+    db: Session = Depends(get_db),
 ) -> list[dict]:
-    """
-    Get list of products with optional filters.
-
-    - **lang**: ru / en / la
-    - **category**: books / clothing / null
-    - **search**: поиск по имени и описанию (case-insensitive)
-    """
-    products = PRODUCTS.get(lang, PRODUCTS["ru"])
+    stmt = (
+        db.query(ProductModel, ProductTranslation)
+        .join(ProductTranslation, ProductTranslation.product_id == ProductModel.id)
+        .filter(ProductTranslation.language == lang)
+    )
 
     if category:
-        products = [p for p in products if p.get("category") == category]
+        stmt = stmt.filter(ProductModel.category == category)
 
+    results = stmt.all()
+
+    # Фильтр поиска — в Python (SQLite LOWER() не понимает кириллицу)
     if search:
-        q = search.lower()
-        products = [
-            p for p in products
-            if q in p["name"].lower() or q in p["desc"].lower()
+        pattern = search.lower()
+        results = [
+            (p, t) for p, t in results
+            if pattern in t.name.lower() or pattern in t.description.lower()
         ]
 
-    return products
+    return [
+        {
+            "id": p.id,
+            "emoji": p.emoji,
+            "category": p.category,
+            "name": t.name,
+            "desc": t.description,
+            "price": p.price,
+            "oldPrice": p.old_price,
+        }
+        for p, t in results
+    ]

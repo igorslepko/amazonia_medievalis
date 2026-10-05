@@ -1,25 +1,15 @@
-def calculate_discount(items: list[dict]) -> float:
-    """
-    Calculate the discounted total based on the original total and discount rate.
+from app.models import CartItem
 
-    Args:
-        total (float): The original total amount.
-        discount_rate (float): The discount rate as a percentage (e.g., 10 for 10%).
 
-    Returns:
-        float: The total amount after applying the discount.
-    """
-    count = 0
-    for item in items:
-        if item["id"] == 4:
-            count += 1
-    if count >= 3:
-        return 0.1
-    return 0.0   # No discount
+def calculate_discount(items: list[CartItem]) -> float:
+    """Считает процент скидки: 10% при 3+ индульгенциях."""
+    count = sum(1 for item in items if item.product_id == 4)
+    return 0.1 if count >= 3 else 0.0
 
-def calculate_totals(items: list[dict]) -> dict:
+
+def calculate_totals(items: list[CartItem]) -> dict:
     """Считает subtotal, discount, total."""
-    subtotal = sum(item["price"] for item in items)
+    subtotal = sum(item.product.price for item in items)
     discount = calculate_discount(items)
     total = round(subtotal * (1 - discount), 2)
     return {
