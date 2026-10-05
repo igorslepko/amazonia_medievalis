@@ -81,17 +81,16 @@ def test_session_id_is_in_cookies(client):
     assert "session_id" in response.cookies
     assert response.cookies["session_id"]
 
-def test_two_clients_are_independent():
+def test_two_clients_are_independent(client):
     from fastapi.testclient import TestClient
     from app.main import app
 
-    client_a = TestClient(app)
     client_b = TestClient(app)
 
-    client_a.post("/api/cart", json={"product_id": 4})
+    client.post("/api/cart", json={"product_id": 4})
     client_b.post("/api/cart", json={"product_id": 2})
 
-    cart_a = client_a.get("/api/cart").json()
+    cart_a = client.get("/api/cart").json()
     cart_b = client_b.get("/api/cart").json()
 
     assert len(cart_a["items"]) == 1
