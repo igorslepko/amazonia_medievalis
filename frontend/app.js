@@ -8,7 +8,7 @@
 const API_BASE =
   window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:8000'
-    : 'https://amazonia-medievalis-api.onrender.com'; // заглушка
+    : 'https://amazonia-medievalis-api.onrender.com';
 
 let currentProducts = []; // товары, загруженные с API
 

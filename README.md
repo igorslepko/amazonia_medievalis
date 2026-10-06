@@ -15,7 +15,7 @@
 
 **Frontend:** https://igorslepko.github.io/amazonia_medievalis/
 
-**API (Swagger):** _coming soon_
+**API (Swagger):** https://amazonia-medievalis-api.onrender.com/docs
 
 ---
 
@@ -154,7 +154,7 @@ amazonia_medievalis/
 - [x] Alembic migrations
 - [x] Docker Compose
 - [x] CI (GitHub Actions)
-- [ ] Deploy to Render + Neon
+- [x] Deploy to Render + Neon
 - [ ] JWT authentication
 
 ## License
