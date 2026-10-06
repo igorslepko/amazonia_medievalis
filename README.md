@@ -39,7 +39,7 @@ The project was built **for practice** in fullstack development:
 - **Shopping cart** — add, remove, clear
 - **10% discount** — when buying 3+ indulgences
 - **Swagger** — auto-generated API docs
-- **Sessions** — via http only cookies
+- **Sessions** — via httponly cookies
 
 ## Tech Stack
 
@@ -54,14 +54,16 @@ The project was built **for practice** in fullstack development:
 
 ## Architecture
 
-──────────────┐ HTTP ┌──────────────┐ SQL ┌──────────────┐
-│ Frontend │ ──────────▶ │ Backend │ ─────────▶ │ PostgreSQL │
-│ (Vanilla) │ │ (FastAPI) │ │ 16 │
-└──────────────┘ └──────────────┘ └──────────────┘
-│ │
-│ Playwright │ pytest
-▼ ▼
-E2E tests API tests
+```
+┌──────────────┐    HTTP     ┌──────────────┐    SQL     ┌──────────────┐
+│  Frontend    │ ──────────▶ │   Backend    │ ─────────▶ │  PostgreSQL  │
+│  (Vanilla)   │             │  (FastAPI)   │            │     16       │
+└──────────────┘             └──────────────┘            └──────────────┘
+       │                             │
+       │ Playwright                  │ pytest
+       ▼                             ▼
+   E2E tests                    API tests
+```
 
 ## Getting Started
 
@@ -73,85 +75,87 @@ E2E tests API tests
 
 ### Run the project
 
+```bash
 # 1. Clone the repository
-
 git clone https://github.com/igorslepko/amazonia_medievalis.git
 cd amazonia_medievalis
 
 # 2. Create .env file
-
 echo "POSTGRES_USER=amazonia
 POSTGRES_PASSWORD=change_me
 POSTGRES_DB=amazonia" > .env
 
 # 3. Start (Postgres + API)
-
 docker compose up --build
 
 # 4. Apply migrations and seed data
-
 docker compose exec api alembic upgrade head
 docker compose exec api python -m app.seed
-API: http://localhost:8000/docs
+```
 
-Run tests
+**API:** http://localhost:8000/docs
 
+### Run tests
+
+```bash
 # Backend
-
 cd backend
 pip install -r requirements.txt
 pytest tests/ -v
 
 # E2E
-
 cd e2e
 npm install
 npx playwright install chromium
 npx playwright test
+```
 
 ## Project Structure
 
-text
+```
 amazonia_medievalis/
-├── backend/ # FastAPI + SQLAlchemy
-│ ├── app/
-│ │ ├── core/ # database, discount, cart_store
-│ │ ├── routers/ # products, cart
-│ │ ├── models.py # SQLAlchemy models
-│ │ └── main.py
-│ ├── tests/ # pytest (31 test)
-│ └── Dockerfile
-├── e2e/ # Playwright
-│ ├── pages/ # Page Objects
-│ └── tests/ # 12 E2E tests
-├── frontend/ # Vanilla JS SPA
+├── backend/           # FastAPI + SQLAlchemy
+│   ├── app/
+│   │   ├── core/      # database, discount, cart_store
+│   │   ├── routers/   # products, cart
+│   │   ├── models.py  # SQLAlchemy models
+│   │   └── main.py
+│   ├── tests/         # pytest (31 test)
+│   └── Dockerfile
+├── e2e/               # Playwright
+│   ├── pages/         # Page Objects
+│   └── tests/         # 12 E2E tests
+├── frontend/          # Vanilla JS SPA
 └── docker-compose.yml
+```
 
 ## Test Coverage
 
-Backend (31 tests):
-Products API (11 tests) — filtering, search, localization
-Cart API (11 tests) — add, remove, discount, checkout
-Discount logic (9 tests) — unit tests
+### Backend (31 tests)
 
-E2E (12 tests):
-Category navigation
-Cart — add, remove, clear
-Multi-language (ru/en/la)
-Multi-currency (₽/$/⛃)
-Search and toast notifications
+- **Products API** (11 tests) — filtering, search, localization
+- **Cart API** (11 tests) — add, remove, discount, checkout
+- **Discount logic** (9 tests) — unit tests
+
+### E2E (12 tests)
+
+- Category navigation
+- Cart — add, remove, clear
+- Multi-language (ru/en/la)
+- Multi-currency (₽/$/⛃)
+- Search and toast notifications
 
 ## Roadmap
 
-☑ SPA + UI logic
-☑ Playwright E2E
-☑ FastAPI backend
-☑ SQLAlchemy + PostgreSQL
-☑ Alembic migrations
-☑ Docker Compose
-☑ CI (GitHub Actions)
-□ Deploy to Render + Neon
-□ JWT authentication
+- [x] SPA + UI logic
+- [x] Playwright E2E
+- [x] FastAPI backend
+- [x] SQLAlchemy + PostgreSQL
+- [x] Alembic migrations
+- [x] Docker Compose
+- [x] CI (GitHub Actions)
+- [ ] Deploy to Render + Neon
+- [ ] JWT authentication
 
 ## License
 
