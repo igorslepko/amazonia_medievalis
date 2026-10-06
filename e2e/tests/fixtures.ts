@@ -62,7 +62,7 @@ export const test = base.extend<Fixtures>({
         body: JSON.stringify(returned_products_all),
       });
     });
-    await page.route('**/api/products?lang=ru&category=clothing', async (route) => {
+    await page.route('**/api/products*&category=clothing', async (route) => {
       const returned_products_clothing = [
         {
           id: 2,
@@ -89,7 +89,7 @@ export const test = base.extend<Fixtures>({
         body: JSON.stringify(returned_products_clothing),
       });
     });
-    await page.route('**/api/products?lang=ru&category=books', async (route) => {
+    await page.route('**/api/products?*&category=books', async (route) => {
       const returned_products_books = [
         {
           id: 1,
