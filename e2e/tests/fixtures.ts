@@ -8,7 +8,7 @@ type Fixtures = {
 
 export const test = base.extend<Fixtures>({
   mainPage: async ({ page }, use) => {
-    await page.route('**/api/products', async (route) => {
+    await page.route('**/api/products*', async (route) => {
       const returned_products_all = [
         {
           id: 1,
