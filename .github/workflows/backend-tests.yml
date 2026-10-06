@@ -2,6 +2,15 @@ name: Backend Tests
 on:
   push:
     branches: [ts]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-tests.yml'
+  pull_request:
+    branches: [ts]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-tests.yml'
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
