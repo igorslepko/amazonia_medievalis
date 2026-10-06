@@ -156,6 +156,9 @@ amazonia_medievalis/
 - [x] CI (GitHub Actions)
 - [x] Deploy to Render + Neon
 - [ ] JWT authentication
+- [ ] Checkout page (frontend)
+- [ ] Order history
+- [ ] TTL cleanup for abandoned carts
 
 ## License
 
