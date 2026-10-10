@@ -45,6 +45,9 @@ class Cart(Base):
         back_populates="cart",
         cascade="all, delete-orphan",
     )
+    user_id: Mapped[int | None] = mapped_column(
+    ForeignKey("users.id"), nullable=True, index=True
+)
 
 class CartItem(Base):
     __tablename__ = "cart_items"
@@ -77,6 +80,9 @@ class Order(Base):
             back_populates="order",
             cascade="all, delete-orphan",
         )
+    user_id: Mapped[int | None] = mapped_column(
+    ForeignKey("users.id"), nullable=True, index=True
+)
     
 class OrderItem(Base):
     __tablename__ = "order_items"
@@ -88,3 +94,13 @@ class OrderItem(Base):
 
     order: Mapped["Order"] = relationship(back_populates="items")
     product: Mapped["Product"] = relationship()
+
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    username: Mapped[str] = mapped_column(String(30), unique=True, index=True)
+    password_hash: Mapped[str] = mapped_column(String(255))
+    created_at: Mapped[datetime] = mapped_column(
+        default=lambda: datetime.now(timezone.utc)
+    )

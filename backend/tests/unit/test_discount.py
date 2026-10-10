@@ -27,7 +27,8 @@ class FakeCartItem:
             ([FakeCartItem(4,100)]*2, 0.0),
             ([FakeCartItem(4,100)]*3, 0.1),
             ([FakeCartItem(4,100)]*4, 0.1),
-        ]
+        ],
+        ids=["empty cart","1 item - no discount", "2 items - no discount", "3 items - GOT discount", "4 items - got discount"]
 )
 def test_calculate_discount(items, expected_discount):
     discount = calculate_discount(items)
